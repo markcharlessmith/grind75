@@ -38,3 +38,7 @@ const mergeTwoSortedLists = (list1, list2) => {
 const listAlpha = [1, 2, 4];
 const listBeta = [1, 3, 4];
 console.log(mergeTwoSortedLists(listAlpha, listBeta)); // should print [1,1,2,3,4,4]
+
+const listGamma = [];
+const listDelta = [0];
+console.log(mergeTwoSortedLists(listGamma, listDelta));
