@@ -19,7 +19,21 @@ The number of nodes in both lists is in the range [0, 50].
 -100 <= Node.val <= 100
 Both list1 and list2 are sorted in non-decreasing order. */
 
-const mergeTwoSortedLists = (list1, list2) => {};
+const mergeTwoSortedLists = (list1, list2) => {
+  const result = [];
+  let i = 0;
+  let j = 0;
+  while (i < list1.length || j < list2.length) {
+    if (j === list2.length || list1[i] < list2[j]) {
+      result.push(list1[i++]);
+      // console.log(result);
+    } else {
+      result.push(list2[j++]);
+      // console.log(result);
+    }
+  }
+  return result;
+};
 
 const listAlpha = [1, 2, 4];
 const listBeta = [1, 3, 4];
