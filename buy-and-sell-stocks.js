@@ -25,7 +25,28 @@ Constraints:
 0 <= prices[i] <= 104
 */
 
-function bestTime(prices) {}
+function bestTime(prices) {
+  // iterate through the input array to find the lowest number and save its index to a variable
+  let lowest = Infinity;
+  let highest = -Infinity;
+  for (let i = 1; i < prices.length; i++) {
+    if (prices[i] < lowest) {
+      lowest = prices[i];
+    }
+    console.log(lowest);
+  }
+  // iterate through the array again and see what the index is of the greatest number after the stored number
+  for (let i = prices[lowest]; i < prices.length; i++) {
+    if (prices[i] > highest) {
+      highest = prices[i];
+    }
+    console.log(highest);
+  }
+  // return the profit
+  return highest - lowest;
+}
 
 const prices1 = [7, 1, 5, 3, 6, 4];
 console.log(bestTime(prices1)); // should print 5
+const prices2 = [8, 2, 4, 3, 12, 9];
+console.log(bestTime(prices2));
