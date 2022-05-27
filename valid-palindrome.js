@@ -25,7 +25,8 @@ s consists only of printable ASCII characters.
 */
 
 function validPalindrome(string) {
-  // use regex
+  // declare a variable
+  // use regex, and remove non-alphanumeric characters
   // use .toLowerCase()
   // recursively slice through the string
 }
