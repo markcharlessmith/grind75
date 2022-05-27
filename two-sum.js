@@ -31,7 +31,7 @@ function twoSum(arr, target) {
       // console.log(cache);
       // return an array of the cache at the index of the target minus the array at index i, and i
       return [cache[target - arr[i]], i];
-      // else, assign cache at array at i to equal i
+      // else, assign cache at array at index i to equal i
     } else {
       cache[arr[i]] = i;
       // console.log(cache[arr[i]]);
@@ -40,13 +40,25 @@ function twoSum(arr, target) {
   return 'No two numbers sum to the target.';
 }
 
+//Similar solution, but using map
+// var twoSum = function (nums, target) {
+//   const map = new Map();
+
+//   for (let i = 0; i < nums.length; i++) {
+//     let result = target - nums[i];
+
+//     if (map.has(result)) return [i, map.get(result)];
+//     map.set(nums[i], i);
+//   }
+// };
+
 console.log(twoSum([1, 3, 5, 7], 10));
 // => should return 1, 3 (indexes of the numbers that add up to the target)
 
 console.log(twoSum([-1, -4, -5, 3, -7, 2, 14], -8));
 // => should return 0, 4
 
-// console.log(twoSum([1, 2, 5, 7], 10));
+console.log(twoSum([1, 2, 5, 7], 10));
 // => should return 'No two numbers sum to the target.' - demonstrating that the same element is not being used twice (5+5)
 
 // console.log(twoSum([1, 2, 3, 7], 11));
