@@ -25,9 +25,11 @@ s consists only of printable ASCII characters.
 */
 
 function validPalindrome(string) {
-  // declare a variable
-  // use regex, and remove non-alphanumeric characters
-  // use .toLowerCase()
+  // define regex to remove non-alphanumeric characters
+  const regex = /[^A-Za-z0-9]/g;
+  // declare a variable, assigned the input string converted to lower case and removing non-alphanumerics
+  let stringToCheck = string.toLowerCase().replace(regex, '');
+  console.log(stringToCheck);
   // recursively slice through the string
 }
 

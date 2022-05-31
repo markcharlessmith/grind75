@@ -55,3 +55,5 @@ console.log(validParens('(]')); // false
 console.log(validParens('([])')); // true
 
 // extension: use recursion and .slice()
+
+// if input[i] === '(', look for
