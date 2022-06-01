@@ -32,3 +32,12 @@ The number of nodes in the tree is in the range [0, 100].
  * @return {TreeNode}
  */
 const invertTree = function (root) {};
+
+const root1 = [4, 2, 7, 1, 3, 6, 9];
+console.log(invertTree(root1)); // should print: [4,7,2,9,6,3,1]
+
+const root2 = [2, 1, 3];
+console.log(invertTree(root2)); // should print: [2,3,1]
+
+const root3 = [];
+console.log(invertTree(root2)); // should print: []
