@@ -14,23 +14,15 @@ Constraints:
 1 <= s.length, t.length <= 5 * 104
 s and t consist of lowercase English letters.*/
 
-// IDEA 1 - object lookup
-// function anagramalizer(s, t) {
-//   // declare storage obj init as {}
-//   // iterate through first string (s) and assign each character as a key on storage with a value which gets init as 1 and gets 1 added if the key already exists
-//   // iterate through second string (t)
-//   // if t contains
-// }
-
-// IDEA 2 - sort and compare
+// sort and compare
 function anagramalizer(s, t) {
   // split the stings, and sort them
   const firstSorted = s.split('').sort().join('');
   const secondSorted = t.split('').sort().join('');
   // compare the two strings
+  console.log(firstSorted, secondSorted);
   if (firstSorted === secondSorted) return true;
   return false;
-  console.log(firstSorted, secondSorted);
 }
 
 const str1 = 'anagram';
