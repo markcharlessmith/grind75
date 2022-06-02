@@ -16,6 +16,8 @@ s and t consist of lowercase English letters.*/
 
 // sort and compare
 function anagramalizer(s, t) {
+  // check if the strings are the same length, return false if different lengths
+  if (s.length !== t.length) return false;
   // split the stings, and sort them
   const firstSorted = s.split('').sort().join('');
   const secondSorted = t.split('').sort().join('');
