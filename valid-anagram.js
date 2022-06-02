@@ -36,3 +36,5 @@ const str4 = 'car';
 console.log(anagramalizer(str3, str4)); // should print: false
 
 /*Follow up: What if the inputs contain Unicode characters? How would you adapt your solution to such a case?*/
+
+// NOTE: use .charCodeAt() method, which returns an integer between 0 and 65535 representing the UTF-16
