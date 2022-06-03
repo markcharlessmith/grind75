@@ -19,9 +19,44 @@ nums is sorted in ascending order.
 */
 
 // O(n) solution
+// function binarySearch(nums, target) {
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] === target) return i;
+//   }
+//   return -1;
+// }
+
+// O(log n) solution
 function binarySearch(nums, target) {
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] === target) return i;
+  let left = 0;
+  let right = nums.length - 1;
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+    // console.log([left, mid, right]);
+    if (nums[mid] === target) {
+      return mid;
+    }
+    // Check to see if the left side is sorted
+    if (nums[left] <= nums[mid]) {
+      if (nums[left] <= target && target <= nums[mid]) {
+        // target is in the left
+        right = mid - 1;
+      } else {
+        // target is in the right
+        left = mid + 1;
+        // console.log([nums[left], nums[right]])
+      }
+    }
+    // Otherwise, the right side must be the side that is sorted
+    else {
+      if (nums[mid] <= target && target <= nums[right]) {
+        // target is in the right
+        left = mid + 1;
+      } else {
+        // target is in the left
+        right = mid - 1;
+      }
+    }
   }
   return -1;
 }
