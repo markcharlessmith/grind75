@@ -18,7 +18,13 @@ All the integers in nums are unique.
 nums is sorted in ascending order.
 */
 
-function binarySearch(nums, target) {}
+// O(n) solution
+function binarySearch(nums, target) {
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === target) return i;
+  }
+  return -1;
+}
 
 const numArray1 = [-1, 0, 3, 5, 9, 12];
 console.log(binarySearch(numArray1, 9)); // should print 4
