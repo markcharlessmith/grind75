@@ -29,9 +29,18 @@ n == image[i].length
 0 <= sc < n
 */
 
-// notes: sr represents starting row, sc represents starting column
+// notes: sr represents source row, sc represents source column
 
-function floodFill(image, sr, sc, newColor) {}
+function floodFill(image, sr, sc, newColor) {
+  // store the pixel that needs to be replaced in a variable
+  const current = image[sr][sc];
+  // if the new color is the same as current, return the original image
+  if (newColor === current) return image;
+  // otherwise, call a helper function which will fill in the image
+  filler(image, sr, sc, newColor);
+}
+
+function filler(image, sr, sc, newColor)
 
 console.log(
   floodFill(
