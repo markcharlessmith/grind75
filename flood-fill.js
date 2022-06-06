@@ -37,10 +37,36 @@ function floodFill(image, sr, sc, newColor) {
   // if the new color is the same as current, return the original image
   if (newColor === current) return image;
   // otherwise, call a helper function which will fill in the image
-  filler(image, sr, sc, newColor);
+  filler(image, sr, sc, newColor, current);
 }
+// helper function
+function filler(image, sr, sc, newColor, current) {
+  //If row < 0 or column < 0 or row > image length or column greater than image length, return
+  if (sr < 0 || sc < 0 || sr > image.length - 1 || sc > image[sr].length - 1)
+    return;
 
-function filler(image, sr, sc, newColor)
+  //If the current pixel is not which needs to be replaced
+  if (image[sr][sc] !== current) {
+    return;
+  }
+
+  //Update the new color
+  image[sr][sc] = newColor;
+  console.log(image);
+
+  //Fill in all four directions
+  //Fill Prev row
+  filler(image, sr - 1, sc, newColor, current);
+
+  //Fill Next row
+  filler(image, sr + 1, sc, newColor, current);
+
+  //Fill Prev col
+  filler(image, sr, sc - 1, newColor, current);
+
+  //Fill next col
+  filler(image, sr, sc + 1, newColor, current);
+}
 
 console.log(
   floodFill(
