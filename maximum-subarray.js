@@ -22,34 +22,49 @@ Constraints:
 Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.*/
 
 // O(n2) solution / non-optimized
+// function maxSubarray(nums) {
+//   // declare a variable to represent the largest sum of the contiguous subarray, init as negative infinity
+//   let largestSum = -Infinity;
+//   // if the input array is empty, return a message indicating so
+//   if (!nums.length) return 'There are no numbers in the input array.';
+//   // iterate through the input array
+//   for (let i = 0; i < nums.length; i++) {
+//     // declare a variable to represent the sum of elements from the start of the array, init as zero;
+//     let sumFromStart = 0;
+//     for (let j = i; j < nums.length; j++) {
+//       console.log([i, j]);
+//       sumFromStart += nums[j];
+//       console.log(sumFromStart);
+//       // as we iterate, reassign largest sum as the larger of largestSum and sumFromStart
+//       largestSum = Math.max(largestSum, sumFromStart);
+//       console.log(largestSum);
+//     }
+//   }
+//   // return the largest sum
+//   return largestSum;
+// }
+
+// Optimized solution with O(n) time complexity
 function maxSubarray(nums) {
-  // declare a variable to represent the largest sum of the contiguous subarray, init as negative infinity
+  let previous = -Infinity;
   let largestSum = -Infinity;
   // if the input array is empty, return a message indicating so
   if (!nums.length) return 'There are no numbers in the input array.';
-  // iterate through the input array
   for (let i = 0; i < nums.length; i++) {
-    // declare a variable to represent the sum of elements from the start of the array, init as zero;
-    let sumFromStart = 0;
-    for (let j = i; j < nums.length; j++) {
-      sumFromStart += nums[j];
-      console.log(sumFromStart);
-      largestSum = Math.max(largestSum, sumFromStart);
-      console.log(largestSum);
-    }
+    previous = Math.max(previous + nums[i], nums[i]);
+    largestSum = Math.max(largestSum, previous);
   }
-  // return largestSum
   return largestSum;
 }
 
 const numArray1 = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 console.log(maxSubarray(numArray1)); // should print 6
 
-// const numArray2 = [1];
-// console.log(maxSubarray(numArray2)); // should print 1
+const numArray2 = [1];
+console.log(maxSubarray(numArray2)); // should print 1
 
-// const numArray3 = [5, 4, -1, 7, 8];
-// console.log(maxSubarray(numArray3)); // should print 23
+const numArray3 = [5, 4, -1, 7, 8];
+console.log(maxSubarray(numArray3)); // should print 23
 
-// const numArray4 = [];
-// console.log(maxSubarray(numArray4)); // should print 'There are no numbers in the input array.'
+const numArray4 = [];
+console.log(maxSubarray(numArray4)); // should print 'There are no numbers in the input array.'
