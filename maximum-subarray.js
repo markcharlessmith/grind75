@@ -21,6 +21,20 @@ Constraints:
 
 Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.*/
 
-function maxSubarray() {}
+function maxSubarray(nums) {
+  // declare a variable to represent the largest sum of the contiguous subarray, init as negative infinity
+  let largestSum = -Infinity;
+  // iterate through the array
 
-console.log(); //
+  // return largestSum
+  return largestSum;
+}
+
+const numArray1 = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+console.log(maxSubarray(numArray1)); // should print 6
+
+const numArray2 = [1];
+console.log(maxSubarray(numArray2)); // should print 1
+
+const numArray3 = [5, 4, -1, 7, 8];
+console.log(maxSubarray(numArray3)); // should print 23
