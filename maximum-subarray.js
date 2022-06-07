@@ -51,8 +51,12 @@ function maxSubarray(nums) {
   // if the input array is empty, return a message indicating so
   if (!nums.length) return 'There are no numbers in the input array.';
   for (let i = 0; i < nums.length; i++) {
+    // iterate through the input array, reassign previous to equal the greater of previous + array[i] and array[i]
     previous = Math.max(previous + nums[i], nums[i]);
+    console.log(previous);
+    // and reassign largestSum to equal the larger of largestSum and previous
     largestSum = Math.max(largestSum, previous);
+    console.log(largestSum);
   }
   return largestSum;
 }
@@ -60,11 +64,11 @@ function maxSubarray(nums) {
 const numArray1 = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 console.log(maxSubarray(numArray1)); // should print 6
 
-const numArray2 = [1];
-console.log(maxSubarray(numArray2)); // should print 1
+// const numArray2 = [1];
+// console.log(maxSubarray(numArray2)); // should print 1
 
-const numArray3 = [5, 4, -1, 7, 8];
-console.log(maxSubarray(numArray3)); // should print 23
+// const numArray3 = [5, 4, -1, 7, 8];
+// console.log(maxSubarray(numArray3)); // should print 23
 
-const numArray4 = [];
-console.log(maxSubarray(numArray4)); // should print 'There are no numbers in the input array.'
+// const numArray4 = [];
+// console.log(maxSubarray(numArray4)); // should print 'There are no numbers in the input array.'
