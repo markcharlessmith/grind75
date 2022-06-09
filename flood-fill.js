@@ -44,10 +44,10 @@ function floodFill(image, sr, sc, newColor) {
 function filler(image, sr, sc, newColor, current) {
   //If row < 0 or column < 0 or row > image length or column greater than image length, return
   if (sr < 0 || sc < 0 || sr > image.length - 1 || sc > image[sr].length - 1)
-    return 'hello1';
+    return 'Please ensure source row and source column are valid';
   //If the current pixel is not which needs to be replaced
   if (image[sr][sc] !== current) {
-    return 'hello2';
+    return 'Error';
   }
   //Update the new color
   image[sr][sc] = newColor;
