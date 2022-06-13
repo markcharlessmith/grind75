@@ -43,10 +43,6 @@ function lowestCommonAncestor(root, p, q) {
   return root;
 }
 
-console.log(
-  lowestCommonAncestor([6, 2, 8, 0, 4, 7, 9, null, null, 3, 5], 2, 8)
-); // should print: 6
-
 let root1 = new TreeNode(6);
 root1.left = new TreeNode(2);
 root1.right = new TreeNode(8);
