@@ -30,8 +30,33 @@ function TreeNode(val) {
 }
 
 //
-function lowestCommonAncestor(root, p, q) {}
+function lowestCommonAncestor(root, p, q) {
+  if (root === null) return null;
+  // if root.val is greater than p and q, then the LCA is in the left side
+  if (root.val > p && root.val > q) {
+    return lowestCommonAncestor(root.left, p, q);
+  }
+  // if root.val is less than p and q, then the LCA is in the right side
+  if (root.val < p && root.val < q) {
+    return lowestCommonAncestor(root.right, p, q);
+  }
+  return root;
+}
 
 console.log(
   lowestCommonAncestor([6, 2, 8, 0, 4, 7, 9, null, null, 3, 5], 2, 8)
 ); // should print: 6
+
+let root1 = new TreeNode(6);
+root1.left = new TreeNode(2);
+root1.right = new TreeNode(8);
+root1.left.left = new TreeNode(0);
+root1.left.right = new TreeNode(4);
+root1.left.right.left = new TreeNode(7);
+root1.left.right.right = new TreeNode(9);
+
+let p = 2;
+let q = 8;
+let lca = lowestCommonAncestor(root1, p, q);
+console.log(lca.val);
+console.log('LCA of ' + p + ' and ' + q + ' is ' + lca.val + '.');
