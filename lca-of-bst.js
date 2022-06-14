@@ -56,3 +56,17 @@ let q = 8;
 let lca = lowestCommonAncestor(root1, p, q);
 console.log(lca.val);
 console.log('LCA of ' + p + ' and ' + q + ' is ' + lca.val + '.');
+
+// second set of test cases
+let root2 = new TreeNode(17);
+root2.left = new TreeNode(8);
+root2.right = new TreeNode(25);
+root2.left.left = new TreeNode(3);
+root2.left.right = new TreeNode(10);
+root2.left.right.left = new TreeNode(11);
+
+let r = 3;
+let s = 10;
+lca = lowestCommonAncestor(root2, r, s);
+console.log(lca.val);
+console.log('LCA of ' + r + ' and ' + s + ' is ' + lca.val + '.');
