@@ -24,5 +24,12 @@ pos is -1 or a valid index in the linked-list.
 */
 
 // linked list definition
-// solution
+function listNode(val) {
+  this.val = val;
+  this.next = null;
+}
+// input: head
+// position
+const hasCycle = function (head) {};
+
 // test cases
