@@ -29,7 +29,14 @@ function listNode(val) {
   this.next = null;
 }
 // input: head
-// position
+// note: position (pos) is not passed as a parameter - it is used internally to denote the index of the node that tail's next pointer is connected to.
 const hasCycle = function (head) {};
 
 // test cases
+const testList1 = new listNode(3);
+testList1.next = new listNode(2);
+testList1.next.next = new listNode(0);
+testList1.next.next.next = new listNode(-4);
+console.log(testList1);
+
+console.log(hasCycle(testList1)); // should return true
