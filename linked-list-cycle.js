@@ -54,3 +54,15 @@ testList1.next.next.next.next = testList1.next;
 console.log(testList1);
 
 console.log(hasCycle(testList1)); // should return true
+
+const testList2 = new listNode(1);
+testList2.next = new listNode(2);
+testList2.next.next = testList2.next;
+console.log(testList2);
+
+console.log(hasCycle(testList2)); // should return true
+
+const testList3 = new listNode(1);
+testList3.next = null;
+
+console.log(hasCycle(testList3)); //  should return false
