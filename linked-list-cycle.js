@@ -30,13 +30,27 @@ function listNode(val) {
 }
 // input: head
 // note: position (pos) is not passed as a parameter - it is used internally to denote the index of the node that tail's next pointer is connected to.
-const hasCycle = function (head) {};
+// output: boolean
+const hasCycle = function (head) {
+  // use two pointers: slow and fast
+  // if tail doesn't have a position, return false
+  let fast = head;
+  let slow = head;
+
+  while (fast && fast.next) {
+    fast = fast.next.next;
+    slow = slow.next;
+    if (fast === slow) return true;
+  }
+  return false;
+};
 
 // test cases
 const testList1 = new listNode(3);
 testList1.next = new listNode(2);
 testList1.next.next = new listNode(0);
 testList1.next.next.next = new listNode(-4);
+testList1.next.next.next.next = testList1.next;
 console.log(testList1);
 
 console.log(hasCycle(testList1)); // should return true
