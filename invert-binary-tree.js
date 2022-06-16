@@ -19,36 +19,30 @@ The number of nodes in the tree is in the range [0, 100].
 -100 <= Node.val <= 100
 */
 
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
-/**
- * @param {TreeNode} root
- * @return {TreeNode}
- */
+function TreeNode(val) {
+  this.val = val;
+  this.left = this.right = null;
+}
 
-// const invertTree = function (root) {
-//   if (root) {
-//     let stored = root.left;
-//     root.left = root.right;
-//     root.right = stored;
+const invertTree = function (root) {
+  if (root) {
+    let stored = root.left;
+    root.left = root.right;
+    root.right = stored;
 
-//     invertTree(root.left);
-//     invertTree(root.right);
-//   }
-//   return root;
-// };
+    invertTree(root.left);
+    invertTree(root.right);
+  }
+  return root;
+};
 
-const root1 = [4, 2, 7, 1, 3, 6, 9];
+// test case
+const root1 = new TreeNode(4);
+root1.left = new TreeNode(2);
+root1.right = new TreeNode(7);
+root1.left.left = new TreeNode(1);
+root1.left.right = new TreeNode(3);
+root1.right.left = new TreeNode(6);
+root1.right.right = new TreeNode(9);
+// [4, 2, 7, 1, 3, 6, 9];
 console.log(invertTree(root1)); // should print: [4,7,2,9,6,3,1]
-
-const root2 = [2, 1, 3];
-console.log(invertTree(root2)); // should print: [2,3,1]
-
-const root3 = [];
-console.log(invertTree(root3)); // should print: []
