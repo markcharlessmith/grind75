@@ -52,7 +52,11 @@ MyQueue.prototype.push = function (x) {
 /**
  * @return {number}
  */
-MyQueue.prototype.pop = function () {};
+MyQueue.prototype.pop = function () {
+  let temp = this.queue[this.tail];
+  delete this.queue[this.tail];
+  return temp;
+};
 
 /**
  * @return {number}
