@@ -53,8 +53,9 @@ MyQueue.prototype.push = function (x) {
  * @return {number}
  */
 MyQueue.prototype.pop = function () {
-  let temp = this.queue[this.tail];
-  delete this.queue[this.tail];
+  let temp = this.queue[this.head];
+  // console.log(this.queue[this.head]);
+  delete this.queue[this.head];
   return temp;
 };
 
