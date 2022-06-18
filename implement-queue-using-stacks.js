@@ -62,12 +62,17 @@ MyQueue.prototype.pop = function () {
 /**
  * @return {number}
  */
-MyQueue.prototype.peek = function () {};
+MyQueue.prototype.peek = function () {
+  return this.queue[this.head];
+};
 
 /**
  * @return {boolean}
  */
-MyQueue.prototype.empty = function () {};
+MyQueue.prototype.empty = function () {
+  if (!this.queue) return true;
+  else return false;
+};
 
 // tests
 myQueue = new MyQueue();
@@ -81,3 +86,6 @@ console.log(myQueue);
 myQueue.pop(); // return 1, queue is [2]
 console.log(myQueue);
 myQueue.empty(); // return false
+console.log(myQueue.empty());
+// myQueue.pop();
+// console.log(myQueue);
