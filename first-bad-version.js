@@ -19,7 +19,7 @@ Output: 1
 // input: version number
 function isBadVersion(num) {
   if (num >= 4) return true;
-  // else return false;
+  else return false;
 }
 
 function solution(api) {
@@ -44,3 +44,5 @@ function solution(api) {
 }
 
 console.log(solution(isBadVersion)(5)); //
+console.log(solution(isBadVersion)(4));
+console.log(solution(isBadVersion)(3));
