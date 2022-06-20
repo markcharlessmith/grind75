@@ -17,15 +17,30 @@ Output: 1
 */
 
 // input: version number
-function isBadVersion(num, bad) {
-  if (num >= bad) return true;
-  else return false;
+function isBadVersion(num) {
+  if (num >= 4) return true;
+  // else return false;
 }
 
-function solution(isBadVersion) {
-  return function (n) {};
+function solution(api) {
+  return function (n) {
+    let left = 1,
+      right = n;
+    while (left <= right) {
+      // locate the middle index
+      let mid = Math.floor((left + right) / 2);
+      // call the API
+      if (isBadVersion(mid)) {
+        // bad version found, move pointer left
+        right = mid - 1;
+      } else {
+        // if bad version is already found, or no bad version found already, look right
+        left = mid + 1;
+      }
+    }
+    // return left, as it now represents the first bad instance
+    return left;
+  };
 }
 
-console.log(isBadVersion(3, 4));
-console.log(isBadVersion(4, 4));
-console.log(isBadVersion(5, 4));
+console.log(solution(isBadVersion)(5)); //
