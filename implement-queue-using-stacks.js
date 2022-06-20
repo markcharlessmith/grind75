@@ -35,9 +35,11 @@ Follow-up: Can you implement the queue such that each operation is amortized O(1
 
 const MyQueue = function () {
   // creates an instance of a queue
-  this.queue = {};
-  this.head = 0;
-  this.tail = 0;
+  // this.queue = [];
+  // this.head = 0;
+  // this.tail = 0;
+  this.s1 = [];
+  this.s2 = [];
 };
 
 /**
@@ -45,33 +47,34 @@ const MyQueue = function () {
  * @return {void}
  */
 MyQueue.prototype.push = function (x) {
-  this.queue[this.tail] = x;
-  this.tail++;
+  // this.queue[this.tail] = x;
+  // this.tail++;
+  if (!s1)
 };
 
 /**
  * @return {number}
  */
 MyQueue.prototype.pop = function () {
-  let temp = this.queue[this.head];
-  // console.log(this.queue[this.head]);
-  delete this.queue[this.head];
-  return temp;
+  // let temp = this.queue[this.head];
+  // // console.log(this.queue[this.head]);
+  // delete this.queue[this.head];
+  // return temp;
 };
 
 /**
  * @return {number}
  */
 MyQueue.prototype.peek = function () {
-  return this.queue[this.head];
+  // return this.queue[this.head];
 };
 
 /**
  * @return {boolean}
  */
 MyQueue.prototype.empty = function () {
-  if (!this.queue) return true;
-  else return false;
+  // if (!this.queue) return true;
+  // else return false;
 };
 
 // tests
