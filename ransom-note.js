@@ -46,3 +46,4 @@ console.log(scaryArtProject('a', 'b')); // expect false
 console.log(scaryArtProject('aa', 'ab')); // expect false
 console.log(scaryArtProject('aa', 'aab')); // expect true
 console.log(scaryArtProject('radar', 'aardvark')); // expect true
+console.log(scaryArtProject('midnight', 'among the crowd inside here')); // expect true
