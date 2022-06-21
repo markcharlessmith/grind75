@@ -19,10 +19,14 @@ ransomNote and magazine consist of lowercase English letters.*/
 function scaryArtProject(ransomNote, magazine) {
   // declare an object
   const letterBank = {};
-  // iterate through each string in the magazine and store instances of character in object
-  for (let i = 0; i < magazine.length; i++) {
-    if (letterBank.magazine[i]) letterBank.magazine[i] += 1;
-    else letterBank.magazine[i] = 1;
+
+  // split the magazine string (and sorting for alphabetic order)
+  const cutLetters = magazine.split('').sort();
+  console.log(cutLetters);
+  // iterate through each character in cutLetters array and store instances of letter in object
+  for (let i = 0; i < cutLetters.length; i++) {
+    if (!letterBank[cutLetters[i]]) letterBank[cutLetters[i]] = 1;
+    else letterBank[cutLetters[i]] += 1;
   }
   console.log(letterBank);
   // iterate through ransomNote and lookup in object to see if required letters present
