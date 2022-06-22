@@ -43,13 +43,23 @@ Constraints:
 1 <= n <= 45
 */
 
-// recursive solution;
+// bottom-up solution
 const climbStairs = function (n) {
-  if (n < 4) return n;
-  return climbStairs(n - 1) + climbStairs(n - 2);
+  let steps = [1, 1];
+  for (let i = 2; i <= n; i++) {
+    steps.push(steps[i - 1] + steps[i - 2]);
+  }
+  // console.log(n, steps)
+  return steps[n];
 };
 
-console.log(climbStairs(2)); // expect 2
-console.log(climbStairs(3)); // expect 3
-console.log(climbStairs(4)); // expect 5
-console.log(climbStairs(5)); // expect 8
+// recursive solution;
+// const climbStairs = function (n) {
+//   if (n < 4) return n;
+//   return climbStairs(n - 1) + climbStairs(n - 2);
+// };
+
+// console.log(climbStairs(2)); // expect 2
+// console.log(climbStairs(3)); // expect 3
+// console.log(climbStairs(4)); // expect 5
+// console.log(climbStairs(5)); // expect 8
