@@ -43,14 +43,36 @@ Constraints:
 1 <= n <= 45
 */
 
-// bottom-up solution
+// bottom up solution
+// const climbStairs = function (n) {
+//   let steps = [1, 1];
+//   for (let i = 2; i <= n; i++) {
+//     steps.push(steps[i - 1] + steps[i - 2]);
+//   }
+//   // console.log(n, steps)
+//   return steps[n];
+// };
+
+// top down solution
 const climbStairs = function (n) {
-  let steps = [1, 1];
-  for (let i = 2; i <= n; i++) {
-    steps.push(steps[i - 1] + steps[i - 2]);
-  }
-  // console.log(n, steps)
-  return steps[n];
+  let cache = {};
+
+  const howManyWays = function (n) {
+    // console.log(cache)
+    if (n in cache) {
+      return cache[n];
+    }
+
+    if (n < 4) {
+      cache[n] = n;
+      return cache[n];
+    }
+
+    cache[n] = howManyWays(n - 1) + howManyWays(n - 2);
+    return cache[n];
+  };
+
+  return howManyWays(n);
 };
 
 // recursive solution;
@@ -62,4 +84,4 @@ const climbStairs = function (n) {
 // console.log(climbStairs(2)); // expect 2
 // console.log(climbStairs(3)); // expect 3
 // console.log(climbStairs(4)); // expect 5
-// console.log(climbStairs(5)); // expect 8
+console.log(climbStairs(5)); // expect 8
