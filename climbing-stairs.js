@@ -62,16 +62,13 @@ const climbStairs = function (n) {
     if (n in cache) {
       return cache[n];
     }
-
     if (n < 4) {
       cache[n] = n;
       return cache[n];
     }
-
     cache[n] = howManyWays(n - 1) + howManyWays(n - 2);
     return cache[n];
   };
-
   return howManyWays(n);
 };
 
@@ -81,7 +78,8 @@ const climbStairs = function (n) {
 //   return climbStairs(n - 1) + climbStairs(n - 2);
 // };
 
+// console.log(climbStairs(1)); // expect 1
 // console.log(climbStairs(2)); // expect 2
 // console.log(climbStairs(3)); // expect 3
 // console.log(climbStairs(4)); // expect 5
-console.log(climbStairs(5)); // expect 8
+// console.log(climbStairs(5)); // expect 8
