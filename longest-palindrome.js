@@ -29,8 +29,18 @@ const longestPalindrome = (s) => {
   let result = 0;
   // base case: if there isn't an input s, return 0
   if (!s) return result;
+  // base case: if the length of the input s is 1, return 1
+  if (s.length === 1) return ++result;
   // iterate through the string
-  console.log(s.replace(s[3], ''));
+  console.log(s.split(''));
+  s = s.split('');
+  const cache = {};
+  for (let i = 0; i < s.length; i++) {
+    if (!cache[s[i]]) cache[s[i]] = 1;
+    else cache[s[i]] += 1;
+    console.log(cache);
+  }
+  // console.log(s.replace(s[3], ''));
   // check if there are two of a given letter, add 2 to result, and remove them from s
   // do this recursively
   // lastly, check also if there is at least one letter that appears only once, if so, add 1 and remove it from s
@@ -39,4 +49,5 @@ const longestPalindrome = (s) => {
 };
 
 console.log(longestPalindrome('abccccdd')); // expect 7
-// console.log(longestPalindrome('')); // expect 0
+// console.log(longestPalindrome('b')); // expect 1
+// console.log(longestPalindrome('')); //expect 0
