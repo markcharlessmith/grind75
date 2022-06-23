@@ -19,6 +19,24 @@ Constraints:
 s consists of lowercase and/or uppercase English letters only.
 */
 
-const longestPalindrome = (s) => {};
+/**
+ * @param {string} s
+ * @return {number}
+ */
 
-console.log(longestPalindrome('abccccdd'));
+const longestPalindrome = (s) => {
+  // declare a variable initialized at 0 to represent the length of the longest palindrome (result)
+  let result = 0;
+  // base case: if there isn't an input s, return 0
+  if (!s) return result;
+  // iterate through the string
+  console.log(s.replace(s[3], ''));
+  // check if there are two of a given letter, add 2 to result, and remove them from s
+  // do this recursively
+  // lastly, check also if there is at least one letter that appears only once, if so, add 1 and remove it from s
+  // return result
+  return result;
+};
+
+console.log(longestPalindrome('abccccdd')); // expect 7
+// console.log(longestPalindrome('')); // expect 0
