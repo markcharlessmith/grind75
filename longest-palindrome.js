@@ -77,5 +77,6 @@ var longestPalindrome = function (s) {
 console.log(longestPalindrome('abccccdd')); // expect 7
 console.log(longestPalindrome('aabbccccc')); // expect 9
 console.log(longestPalindrome('aabcc')); // expect 5
+console.log(longestPalindrome('aabcd')); // expect 3
 console.log(longestPalindrome('b')); // expect 1
 console.log(longestPalindrome('')); //expect 0
