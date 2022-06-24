@@ -29,4 +29,17 @@ minStack.top();    // return 0
 minStack.getMin(); // return -2
 */
 
-function minStack() {}
+// initializes the stack object
+function MinStack() {}
+
+// pushes the element val onto the stack
+MinStack.prototype.push = function (val) {};
+
+// removes the element on the top of the stack
+MinStack.prototype.pop = function () {};
+
+// returns the top element of the stack
+MinStack.prototype.top = function () {};
+
+// retrieves the minimum element in the stack
+MinStack.prototype.getMin = function () {};
