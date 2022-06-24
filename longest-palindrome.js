@@ -71,7 +71,13 @@ var longestPalindrome = function (s) {
     if (keys[char] % 2 == 0) longest += 2;
   }
   // If s.length is greater than longest then we know that we can add a unique char in the middle of the palindrome
-  return s.length > longest ? longest + 1 : longest;
+  if (s.length > longest) {
+    longest += 1;
+    return longest;
+  } else {
+    return longest;
+  }
+  // return s.length > longest ? longest + 1 : longest;
 };
 
 console.log(longestPalindrome('abccccdd')); // expect 7
