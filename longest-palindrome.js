@@ -68,8 +68,10 @@ var longestPalindrome = function (s) {
     // Keep track of character count in the keys object
     keys[char] = (keys[char] || 0) + 1;
     // If add 2 to the longest variable everytime we hit an even number count
-    if (keys[char] % 2 == 0) longest += 2;
+    if (keys[char] % 2 === 0) longest += 2;
   }
+  console.log(keys);
+  console.log(longest);
   // If s.length is greater than longest then we know that we can add a unique char in the middle of the palindrome
   if (s.length > longest) {
     longest += 1;
@@ -81,8 +83,8 @@ var longestPalindrome = function (s) {
 };
 
 console.log(longestPalindrome('abccccdd')); // expect 7
-console.log(longestPalindrome('aabbccccc')); // expect 9
-console.log(longestPalindrome('aabcc')); // expect 5
-console.log(longestPalindrome('aabcd')); // expect 3
-console.log(longestPalindrome('b')); // expect 1
-console.log(longestPalindrome('')); //expect 0
+// console.log(longestPalindrome('aabbccccc')); // expect 9
+// console.log(longestPalindrome('aabcc')); // expect 5
+// console.log(longestPalindrome('aabcd')); // expect 3
+// console.log(longestPalindrome('b')); // expect 1
+// console.log(longestPalindrome('')); //expect 0
