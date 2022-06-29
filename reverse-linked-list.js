@@ -29,4 +29,25 @@ Follow up: A linked list can be reversed either iteratively or recursively. Coul
  * @param {ListNode} head
  * @return {ListNode}
  */
-const reverseList = function (head) {};
+
+function ListNode(value) {
+  this.value = value;
+  this.next = null;
+}
+const reverseList = function (head) {
+  if (!head || !head.next) return head;
+  let previous = null;
+  let current = head;
+  let next;
+
+  while (current) {
+    next = current.next;
+    current.next = previous;
+    previous = current;
+    current = next;
+  }
+  head = previous;
+  return head;
+};
+
+// add tests
