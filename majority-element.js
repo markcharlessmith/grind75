@@ -42,9 +42,10 @@ function majorityElement(numArray) {
   return parseInt(result[0]);
   // return the key which has the greatest value stored
 }
-
+// test cases:
 console.log(majorityElement([3, 2, 3])); // expect 3
 console.log(majorityElement([2, 2, 1, 1, 1, 2, 2])); // expect 2
 console.log(majorityElement([])); // expect 'array contains no numbers'
 console.log(majorityElement([3, 4, 4, 4, 4])); // expect 4
 console.log(majorityElement()); // expect undefined
+console.log(majorityElement([1, 2, 3, 5, 1, 2, 5, 3, 2, 4, 4, 5, 5])); // expect 5
