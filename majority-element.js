@@ -22,6 +22,8 @@ n == nums.length
 */
 
 function majorityElement(numArray) {
+  // handle edge cases
+  if (!numArray) return undefined;
   if (numArray.length === 0) return 'array contains no numbers';
   // create a cache object
   const cache = {};
@@ -45,3 +47,4 @@ console.log(majorityElement([3, 2, 3])); // expect 3
 console.log(majorityElement([2, 2, 1, 1, 1, 2, 2])); // expect 2
 console.log(majorityElement([])); // expect 'array contains no numbers'
 console.log(majorityElement([3, 4, 4, 4, 4])); // expect 4
+console.log(majorityElement()); // expect undefined
