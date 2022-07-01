@@ -24,3 +24,7 @@ Each string does not contain leading zeros except for the zero itself.*/
  * @return {string}
  */
 const addBinary = function (a, b) {};
+
+//process: take input binaries, convert them to base 10 numbers
+// add them together
+// convert that sum back to a binary
