@@ -27,9 +27,5 @@ const addBinary = function (a, b) {
   return (parseInt(a, 2) + parseInt(b, 2)).toString(2);
 };
 
-//process: take input binaries, convert them to base 10 numbers
-// add them together
-// convert that sum back to a binary
-
 console.log(addBinary('11', '1')); // expect "100"
 console.log(addBinary('1010', '1011')); // expect "10101"
