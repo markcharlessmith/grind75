@@ -43,6 +43,31 @@ function TreeNode(val, left, right) {
  * @param {TreeNode} root
  * @return {number}
  */
-var diameterOfBinaryTree = function (root) {};
 
-const testNode = new TreeNode(1);
+const heightCounter = function (root) {
+  if (!root) return 0;
+  return 1 + Math.max(heightCounter(root.left), heightCounter(root.right));
+};
+
+const diameterOfBinaryTree = function (root) {
+  if (!root) return 0;
+
+  let leftHeight = heightCounter(root.left);
+  let rightHeight = heightCounter(root.right);
+
+  let left = diameterOfBinaryTree(root.left);
+  let right = diameterOfBinaryTree(root.right);
+
+  // console.log(leftHeight + rightHeight + 1, Math.max(left, right));
+  return Math.max(leftHeight + rightHeight + 1, Math.max(left, right));
+};
+
+const test = new TreeNode(9);
+test.left = new TreeNode(7);
+test.right = new TreeNode(10);
+test.left.left = new TreeNode(5);
+test.left.right = new TreeNode(6);
+test.right.right = new TreeNode(12);
+
+console.log(heightCounter(test)); // expect 3
+console.log('Diameter of the binary tree: ' + diameterOfBinaryTree(test)); // expect 5
