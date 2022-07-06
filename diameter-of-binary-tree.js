@@ -71,3 +71,19 @@ test.right.right = new TreeNode(12);
 
 console.log(heightCounter(test)); // expect 3
 console.log('Diameter of the binary tree: ' + diameterOfBinaryTree(test)); // expect 5
+
+const test2 = new TreeNode(124);
+test2.left = new TreeNode(173);
+test2.right = new TreeNode(126);
+test2.left.left = new TreeNode(165);
+test2.left.right = new TreeNode(612);
+test2.right.right = new TreeNode(158);
+test2.right.left = new TreeNode(135);
+test2.right.left.right = new TreeNode(145);
+
+console.log(heightCounter(test2)); // expect 4
+console.log('Diameter of the binary tree: ' + diameterOfBinaryTree(test2)); // expect 6
+
+const test3 = new TreeNode(1);
+console.log(heightCounter(test3)); // expect 1
+console.log('Diameter of the binary tree: ' + diameterOfBinaryTree(test3)); // expect 1
