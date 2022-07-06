@@ -27,4 +27,53 @@ The number of nodes in the list is in the range [1, 100].
  * @return {ListNode}
  */
 
-function MiddleNode(head) {}
+// singly-linked list definition
+function ListNode(val, next) {
+  this.val = val === undefined ? 0 : val;
+  this.next = next === undefined ? null : next;
+}
+
+function MiddleNode(head) {
+  let pointer = head;
+  let count = 1;
+
+  while (pointer.next) {
+    pointer = pointer.next;
+    count++;
+  }
+
+  count = Math.ceil(count / 2) + 1;
+  console.log(count);
+
+  return count;
+}
+
+const testList = new ListNode(1);
+testList.next = new ListNode(2);
+testList.next.next = new ListNode(3);
+testList.next.next = new ListNode(4);
+testList.next.next.next = new ListNode(5);
+
+console.log(MiddleNode(testList)); // expect 3
+
+const testList2 = new ListNode(1);
+testList2.next = new ListNode(2);
+testList2.next.next = new ListNode(3);
+testList2.next.next = new ListNode(4);
+testList2.next.next.next = new ListNode(5);
+testList2.next.next.next.next = new ListNode(6);
+
+console.log(MiddleNode(testList2)); // expect 4
+
+const testList3 = new ListNode(1);
+testList3.next = new ListNode(2);
+testList3.next.next = new ListNode(3);
+testList3.next.next = new ListNode(4);
+testList3.next.next.next = new ListNode(5);
+testList3.next.next.next.next = new ListNode(6);
+testList3.next.next.next.next.next = new ListNode(7);
+testList3.next.next.next.next.next.next = new ListNode(8);
+testList3.next.next.next.next.next.next.next = new ListNode(9);
+testList3.next.next.next.next.next.next.next.next = new ListNode(10);
+
+console.log(MiddleNode(testList3)); // expect 6
