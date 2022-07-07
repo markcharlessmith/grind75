@@ -29,6 +29,7 @@ const maxDepth = function (root) {};
 const test1 = new TreeNode(3);
 test1.left = new TreeNode(1);
 test1.right = new TreeNode(6);
-test1.left.right = new TreeNode(7);
+test1.right.left = new TreeNode(5);
+test1.right.right = new TreeNode(7);
 
 console.log(maxDepth(test1)); // expect 3
