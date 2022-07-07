@@ -25,6 +25,7 @@ function TreeNode(val, left, right) {
  * @return {number}
  */
 const maxDepth = function (root) {
+  // use a helper function which accepts a node to recursively determine which side of tree is deeper
   const depthFinder = (node) => {
     // if there are no nodes return 0
     if (!node) return 0;
