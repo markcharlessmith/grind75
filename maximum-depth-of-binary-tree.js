@@ -24,12 +24,33 @@ function TreeNode(val, left, right) {
  * @param {TreeNode} root
  * @return {number}
  */
-const maxDepth = function (root) {};
+const maxDepth = function (root) {
+  const depthFinder = (node) => {
+    // if there are no nodes return 0
+    if (!node) return 0;
+    // else return the greater of 1 + the evaluated result of depthFinder called with node.left as argument or 1 + evaluated result of depthFinder called with node.right as argument
+    // console.log([depthFinder(node.left), depthFinder(node.right)])
+    return Math.max(1 + depthFinder(node.left), 1 + depthFinder(node.right));
+  };
+  // return depth finder
+  return depthFinder(root);
+};
 
 const test1 = new TreeNode(3);
 test1.left = new TreeNode(1);
 test1.right = new TreeNode(6);
 test1.right.left = new TreeNode(5);
 test1.right.right = new TreeNode(7);
-
 console.log(maxDepth(test1)); // expect 3
+
+const test2 = new TreeNode(1);
+console.log(maxDepth(test2)); // expect 1
+
+let test3;
+console.log(maxDepth(test3)); // expect 0
+
+const test4 = new TreeNode(1);
+test4.left = new TreeNode(2);
+test4.left.left = new TreeNode(3);
+test4.left.left.left = new TreeNode(4);
+console.log(maxDepth(test4)); // expect 4
