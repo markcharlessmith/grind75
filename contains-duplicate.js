@@ -24,6 +24,8 @@ const containsDuplicate = function (nums) {
     // set each number as a key on an object
     if (!numCache[nums[i]]) numCache[nums[i]] = 1;
     else numCache[nums[i]] += 1;
+    // handle edge case of array containing elements that are not numbers
+    if (typeof nums[i] !== 'number') return 'array must only contain numbers';
     console.log(numCache);
   }
   // loop through the keys of the cache
@@ -42,3 +44,10 @@ console.log(containsDuplicate(numArray2)); // expect false
 
 const numArray3 = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2];
 console.log(containsDuplicate(numArray3)); // expect true
+
+// edge cases
+const numArray4 = [1, 2, 3, 'a'];
+console.log(containsDuplicate(numArray4)); // expect 'array must only contain numbers'
+
+const numArray5 = [null];
+console.log(containsDuplicate(numArray5)); // expect 'array must only contain numbers'
