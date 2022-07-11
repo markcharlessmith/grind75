@@ -26,7 +26,7 @@ const containsDuplicate = function (nums) {
     else numCache[nums[i]] += 1;
     // handle edge case of array containing elements that are not numbers
     if (typeof nums[i] !== 'number') return 'array must only contain numbers';
-    console.log(numCache);
+    // console.log(numCache);
   }
   // loop through the keys of the cache
   for (const key in numCache) {
