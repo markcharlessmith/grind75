@@ -23,15 +23,37 @@ Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
 
 // inputs: an array of arrays, representing intervals, and a newInterval array
 // output: a mutated array of arrays intervals
-var insert = function (intervals, newInterval) {
+const insert = function (intervals, newInterval) {
   // check if intervals and newInterval are valid arrays
   if (!Array.isArray(intervals) || !Array.isArray(newInterval)) {
     return 'input data type is invalid';
   }
-  //
+  const result = [];
+  // loop through the intervals array
+  for (let i = 0; i < intervals.length; i++) {
+    let interval = intervals[i];
+    // if there is an overlap
+    if (
+      Math.max(interval[0], newInterval[0]) <=
+      Math.min(interval[1], newInterval[1])
+    ) {
+      newInterval = [
+        Math.min(interval[0], newInterval[0]),
+        Math.max(interval[1], newInterval[1]),
+      ];
+      continue;
+    }
 
-  // return the mutated array of arrays, intervals
-  return intervals;
+    // if lower
+    if (interval[0] > newInterval[1]) {
+      result.push(newInterval, ...intervals.slice(i));
+      return result;
+    }
+    result.push(interval);
+    // return the mutated array of arrays, intervals
+  }
+  result.push(newInterval);
+  return result;
 };
 
 const intervals = [
@@ -40,3 +62,13 @@ const intervals = [
 ];
 const newInterval = [2, 5];
 console.log(insert(intervals, newInterval)); // expect [[1,5],[6,9]]
+
+const intervals2 = [
+  [1, 2],
+  [3, 5],
+  [6, 7],
+  [8, 10],
+  [12, 16],
+];
+const newInterval2 = [4, 8];
+console.log(insert(intervals2, newInterval2)); // expect [[1,2], [3,10], [12,16]]
