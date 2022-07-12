@@ -21,4 +21,18 @@ Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
  * @return {number[][]}
  */
 
-var insert = function (intervals, newInterval) {};
+// inputs: an array of arrays, representing intervals, and a newInterval array
+// output: a mutated array of arrays intervals
+var insert = function (intervals, newInterval) {
+  //
+
+  // return the mutated array of arrays, intervals
+  return intervals;
+};
+
+const intervals = [
+  [1, 3],
+  [6, 9],
+];
+const newInterval = [2, 5];
+console.log(insert(intervals, newInterval)); // expect [[1,5],[6,9]]
