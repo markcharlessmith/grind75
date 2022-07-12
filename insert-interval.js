@@ -24,6 +24,10 @@ Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
 // inputs: an array of arrays, representing intervals, and a newInterval array
 // output: a mutated array of arrays intervals
 var insert = function (intervals, newInterval) {
+  // check if intervals and newInterval are valid arrays
+  if (!Array.isArray(intervals) || !Array.isArray(newInterval)) {
+    return 'input data type is invalid';
+  }
   //
 
   // return the mutated array of arrays, intervals
