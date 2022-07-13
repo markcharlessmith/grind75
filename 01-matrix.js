@@ -23,7 +23,27 @@ There is at least one 0 in mat.
  * @return {number[][]}
  */
 var updateMatrix = function (mat) {
+  // create a resultMatrix
+  const resultMatrix = [];
+  console.log(mat.length);
+  let rowCount = mat.length;
+  while (rowCount > 0) {
+    resultMatrix.push([]);
+    rowCount--;
+  }
+  let columnCount = mat[0].length;
+  console.log(mat[0].length);
+  for (let i = 0; i < mat[0].length; i++) {
+    console.log(resultMatrix[i]);
+    while (resultMatrix[i].length < mat[0].length) {
+      resultMatrix[i].push(0);
+    }
+  }
+  console.log(resultMatrix);
+  // successfully created a result matrix which meets the criteria specified
+
   // look left, look up, look right, look down
+  return resultMatrix;
 };
 
 const matrix1 = [
@@ -38,4 +58,4 @@ const matrix2 = [
   [0, 1, 0],
   [1, 1, 1],
 ];
-console.log(updateMatrix(matrix2)); // expect [[0,0,0],[0,1,0],[1,2,1]]
+// console.log(updateMatrix(matrix2)); // expect [[0,0,0],[0,1,0],[1,2,1]]
