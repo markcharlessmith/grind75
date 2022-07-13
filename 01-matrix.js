@@ -25,7 +25,7 @@ There is at least one 0 in mat.
 var updateMatrix = function (mat) {
   // create a resultMatrix
   const resultMatrix = [];
-  console.log(mat.length);
+  // console.log(mat.length);
   let rowCount = mat.length;
   while (rowCount > 0) {
     resultMatrix.push([]);
@@ -34,13 +34,24 @@ var updateMatrix = function (mat) {
   let columnCount = mat[0].length;
   console.log(mat[0].length);
   for (let i = 0; i < mat[0].length; i++) {
-    console.log(resultMatrix[i]);
+    // console.log(resultMatrix[i]);
     while (resultMatrix[i].length < mat[0].length) {
       resultMatrix[i].push(0);
     }
   }
   console.log(resultMatrix);
   // successfully created a result matrix which meets the criteria specified
+
+  // iterate through the input matrix
+  for (let i = 0; i < mat.length; i++) {
+    for (let j = 0; j < mat[i].length; j++) {
+      if (mat[i][j] !== 0) {
+        // console.log(mat[i][j])
+        // console.log(resultMatrix[i][j])
+        resultMatrix[i][j] = mat[i][j];
+      }
+    }
+  }
 
   // look left, look up, look right, look down
   return resultMatrix;
