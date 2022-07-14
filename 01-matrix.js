@@ -46,8 +46,6 @@ var updateMatrix = function (mat) {
   for (let i = 0; i < mat.length; i++) {
     for (let j = 0; j < mat[i].length; j++) {
       if (mat[i][j] !== 0) {
-        // console.log(mat[i][j])
-        // console.log(resultMatrix[i][j])
         resultMatrix[i][j] = mat[i][j];
       }
     }
@@ -69,4 +67,4 @@ const matrix2 = [
   [0, 1, 0],
   [1, 1, 1],
 ];
-// console.log(updateMatrix(matrix2)); // expect [[0,0,0],[0,1,0],[1,2,1]]
+console.log(updateMatrix(matrix2)); // expect [[0,0,0],[0,1,0],[1,2,1]]
