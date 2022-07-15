@@ -47,6 +47,8 @@ var updateMatrix = function (mat) {
     for (let j = 0; j < mat[i].length; j++) {
       if (mat[i][j] !== 0) {
         resultMatrix[i][j] = mat[i][j];
+        if (mat[i - 1][j] === 1) resultMatrix[i][j] += 1;
+        // if (mat[i+1] && mat[i + 1][j] === 1) resultMatrix[i][j] += 1;
       }
     }
   }
