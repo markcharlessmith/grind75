@@ -68,7 +68,7 @@ var updateMatrix = function (mat) {
       }
     }
   }
-
+  // console.log(knownZeros)
   for (var i = 0; i < mat.length; i++) {
     for (var j = 0; j < mat[i].length; j++) {
       if (mat[i][j] === 1) {
@@ -79,6 +79,7 @@ var updateMatrix = function (mat) {
             Math.abs(i - knownZeros[k][0]) + Math.abs(j - knownZeros[k][1]);
           if (smallestDelta === null || delta < smallestDelta) {
             smallestDelta = delta;
+            // console.log(smallestDelta)
           }
         }
         mat[i][j] = smallestDelta;
@@ -93,7 +94,7 @@ const matrix1 = [
   [0, 1, 0],
   [0, 0, 0],
 ];
-console.log(updateMatrix(matrix1)); // expect [[0,0,0],[0,1,0],[0,0,0]]
+// console.log(updateMatrix(matrix1)); // expect [[0,0,0],[0,1,0],[0,0,0]]
 
 const matrix2 = [
   [0, 0, 0],
@@ -109,4 +110,4 @@ const matrix3 = [
   [0, 1, 1, 1, 0],
   [0, 1, 1, 1, 0],
 ];
-console.log(updateMatrix(matrix3));
+// console.log(updateMatrix(matrix3));
