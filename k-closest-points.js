@@ -27,4 +27,21 @@ Constraints:
  * @param {number} k
  * @return {number[][]}
  */
-const kClosest = function (points, k) {};
+const kClosest = function (points, k) {
+  const squaredDistance = ([x, y]) => x ** 2 + y ** 2;
+  // Sort the array with a custom lambda comparator function
+  points.sort((a, b) => squaredDistance(a) - squaredDistance(b));
+
+  // Return the first k elements of the sorted array
+  return points.slice(0, k);
+};
+
+// Calculate and return the squared Euclidean distance
+
+const points = [
+    [3, 3],
+    [5, -1],
+    [-2, 4],
+  ],
+  k = 2;
+console.log(kClosest(points));
