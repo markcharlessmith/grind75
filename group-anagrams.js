@@ -27,23 +27,35 @@ strs[i] consists of lowercase English letters.*/
 // input: array of strings
 // output: array of arrays of strings, grouped accordingly
 
-const groupAnagrams = function (strs) {
-  // create an array
-  const sortedStrs = [];
+const groupAnagrams = (words) => {
+  let anagrams = {};
+  let collectedAnagrams = [];
 
-  console.log(strs);
-  //sort each string in the input array alphabetically
-  for (let i = 0; i < strs.length; i++) {
-    strs[i] = strs[i].split('').sort().join('');
+  for (let word of words) {
+    // alphabetize letters
+    let letters = word.split('').sort().join('');
+
+    // create hash key-value pair for alphabetized letters of word if it does not exist
+    anagrams[letters] = anagrams[letters] || [];
+
+    // add word to value of the key which matches its letters
+    anagrams[letters].push(word);
   }
-  console.log(strs);
+
+  // iterate through anagrams hash keys and add their values as subarrays of the collectedAnagrams array
+  for (let key in anagrams) {
+    collectedAnagrams.push(anagrams[key]);
+  }
+
+  // return the array of arrays
+  return collectedAnagrams;
 };
 
 const arr1 = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat'];
 console.log(groupAnagrams(arr1)); // expect: [["bat"],["nat","tan"],["ate","eat","tea"]]
 
-// const arr2 = [''];
-// console.log(groupAnagrams(arr2)); // expect: [[""]]
+const arr2 = [''];
+console.log(groupAnagrams(arr2)); // expect: [[""]]
 
-// const arr3 = ['a'];
-// console.log(groupAnagrams(arr3)); // expect: [["a"]]
+const arr3 = ['a'];
+console.log(groupAnagrams(arr3)); // expect: [["a"]]
