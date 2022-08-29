@@ -26,10 +26,16 @@ Output: 1
  * @return {number}
  */
 const lastStoneWeight = function (stones) {
+  if (!Array.isArray(stones))
+    return 'please smash together a valid pile of stones';
+
+  if (stones.length === 0) return 'no stones were smashed';
+
   let greatest = -Infinity;
   let nextGreatest = -Infinity;
   let difference = 0;
-  // sort the stones array
+
+  // sort the stones array from greatest to least
   stones = stones.sort((a, b) => {
     return b - a;
   });
@@ -39,13 +45,15 @@ const lastStoneWeight = function (stones) {
     // take the difference of the two greatest values
     greatest = stones[0];
     nextGreatest = stones[1];
-    console.log([greatest, nextGreatest]);
+    // console.log([greatest, nextGreatest]);
     difference = greatest - nextGreatest;
-    console.log(difference);
+    // console.log(difference);
+    // push the difference onto the stones array
     stones.push(difference);
     stones.shift();
     stones.shift();
-    console.log(stones);
+    // console.log(stones);
+    if (stones.length === 0) return 0;
   }
   return stones[0];
 };
@@ -53,5 +61,14 @@ const lastStoneWeight = function (stones) {
 const pileOfStones1 = [2, 7, 4, 1, 8, 1];
 console.log(lastStoneWeight(pileOfStones1)); // expect 1
 
-// const pileOfStones2 = [1];
-// console.log(lastStoneWeight(pileOfStones2)); // expect 1
+const pileOfStones2 = [1];
+console.log(lastStoneWeight(pileOfStones2)); // expect 1
+
+const pileOfStones3 = [2, 2, 3, 1, 3, 1];
+console.log(lastStoneWeight(pileOfStones3)); // expect 0
+
+const pileOfStones4 = 'x';
+console.log(lastStoneWeight(pileOfStones4));
+
+const pileOfStones5 = [];
+console.log(lastStoneWeight(pileOfStones5));
