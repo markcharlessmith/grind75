@@ -68,7 +68,7 @@ const pileOfStones3 = [2, 2, 3, 1, 3, 1];
 console.log(lastStoneWeight(pileOfStones3)); // expect 0
 
 const pileOfStones4 = 'x';
-console.log(lastStoneWeight(pileOfStones4));
+console.log(lastStoneWeight(pileOfStones4)); // expect 'please smash together a valid pile of stones'
 
 const pileOfStones5 = [];
-console.log(lastStoneWeight(pileOfStones5));
+console.log(lastStoneWeight(pileOfStones5)); // expect 'no stones were smashed'
