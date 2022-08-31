@@ -36,12 +36,13 @@ const lastStoneWeight = function (stones) {
   let difference = 0;
 
   // sort the stones array from greatest to least
-  stones = stones.sort((a, b) => {
-    return b - a;
-  });
   console.log(stones);
   // for (let i = 0; i < stones.length; i++) {
   while (stones.length > 1) {
+    stones = stones.sort((a, b) => {
+      return b - a;
+    });
+    console.log(stones);
     // take the difference of the two greatest values
     greatest = stones[0];
     nextGreatest = stones[1];
@@ -52,7 +53,7 @@ const lastStoneWeight = function (stones) {
     stones.push(difference);
     stones.shift();
     stones.shift();
-    // console.log(stones);
+    console.log(stones);
     if (stones.length === 0) return 0;
   }
   return stones[0];
