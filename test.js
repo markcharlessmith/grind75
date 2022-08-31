@@ -27,17 +27,19 @@ const isPalindrome = function (s) {
   const regex = /[^A-Za-z0-9]/g;
   // remove spaces and handle capitalization by making lower case all letters
   s = s.replaceAll(regex, '').toLowerCase();
-  console.log(s);
+  // console.log(s);
   // base case: if s.length === 0 or 1 return true
-  if (s.length === 0 || s.length === 1) return true;
-  // recursive case: so long as the first and last indexes are strictly equal, slice off the first and last index
-  if (s[0] === s[s.length - 1]) {
-    return isPalindrome(s.slice(1, -1));
+  function helper(s) {
+    if (s.length === 0 || s.length === 1) return true;
+    // recursive case: so long as the first and last indexes are strictly equal, slice off the first and last index
+    if (s[0] === s[s.length - 1]) {
+      return helper(s.slice(1, -1));
+    }
+    return false;
   }
-  return false;
+  return helper(s);
 };
 
-// console.log(s)
 console.log(isPalindrome('A man, a plan, a canal: Panama'));
 console.log(isPalindrome('rad'));
 console.log(isPalindrome('Taco Cat'));
