@@ -30,9 +30,9 @@ const isPalindrome = function (s) {
   console.log(s);
   // base case: if s.length === 0 or 1 return true
   if (s.length === 0 || s.length === 1) return true;
-  // console.log(s.slice(-1, 1))
+  // recursive case: so long as the first and last indexes are strictly equal, slice off the first and last index
   if (s[0] === s[s.length - 1]) {
-    return isPalindrome(s.slice(-1, 1));
+    return isPalindrome(s.slice(1, -1));
   }
   return false;
 };
