@@ -58,7 +58,6 @@ const diameterOfBinaryTree = function (root) {
   let left = diameterOfBinaryTree(root.left);
   let right = diameterOfBinaryTree(root.right);
 
-  // console.log(leftHeight + rightHeight + 1, Math.max(left, right));
   return Math.max(leftHeight + rightHeight + 1, Math.max(left, right));
 };
 
