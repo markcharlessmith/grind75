@@ -30,4 +30,10 @@ The number of nodes in both trees is in the range [0, 100].
  * @param {TreeNode} q
  * @return {boolean}
  */
-const isSameTree = function (p, q) {};
+const isSameTree = function (p, q) {
+  // base cases
+  if (!p && !q) return true;
+  if (!p || !q || p.val !== q.val) return false;
+  // recursive case
+  return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+};
