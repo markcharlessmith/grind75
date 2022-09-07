@@ -25,6 +25,12 @@ The number of nodes in both trees is in the range [0, 100].
  *     this.right = (right===undefined ? null : right)
  * }
  */
+
+function TreeNode(val, left, right) {
+  this.val = val === undefined ? 0 : val;
+  this.left = left === undefined ? null : left;
+  this.right = right === undefined ? null : right;
+}
 /**
  * @param {TreeNode} p
  * @param {TreeNode} q
@@ -37,3 +43,27 @@ const isSameTree = function (p, q) {
   // recursive case
   return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
 };
+
+const test = new TreeNode(9);
+test.left = new TreeNode(7);
+test.right = new TreeNode(10);
+test.left.left = new TreeNode(5);
+test.left.right = new TreeNode(6);
+test.right.right = new TreeNode(12);
+
+const test2 = new TreeNode(9);
+test2.left = new TreeNode(7);
+test2.right = new TreeNode(10);
+test2.left.left = new TreeNode(5);
+test2.left.right = new TreeNode(6);
+test2.right.right = new TreeNode(12);
+
+const test3 = new TreeNode(9);
+test3.left = new TreeNode(2);
+test3.right = new TreeNode(11);
+test3.left.left = new TreeNode(5);
+test3.left.right = new TreeNode(6);
+test3.right.right = new TreeNode(12);
+
+console.log(isSameTree(test, test2));
+console.log(isSameTree(test, test3));
