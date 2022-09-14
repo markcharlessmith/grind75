@@ -31,4 +31,54 @@ grid[i][j] is '0' or '1'.
  * @return {number}
  */
 
-var numIslands = function (grid) {};
+// helper function doing depth-first search
+function dfs(grid, i, j) {
+  // check if the i and j values are valid - if they aren't, return out
+  if (
+    i < 0 ||
+    i >= grid.length ||
+    j < 0 ||
+    j >= grid[0].length ||
+    grid[i][j] === '0'
+  )
+    return;
+
+  grid[i][j] = '0';
+  // look in all four directions, and call dfs for each
+  dfs(grid, i + 1, j);
+  dfs(grid, i - 1, j);
+  dfs(grid, i, j + 1);
+  dfs(grid, i, j - 1);
+}
+
+var numIslands = function (grid) {
+  let count = 0;
+
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[0].length; j++) {
+      if (grid[i][j] === '1') {
+        count += 1;
+        dfs(grid, i, j);
+      }
+    }
+  }
+  return count;
+};
+
+console.log(
+  numIslands([
+    ['1', '1', '1', '1', '0'],
+    ['1', '1', '0', '1', '0'],
+    ['1', '1', '0', '0', '0'],
+    ['0', '0', '0', '0', '0'],
+  ])
+); // expect 1
+
+console.log(
+  numIslands([
+    ['1', '1', '0', '0', '0'],
+    ['1', '1', '0', '0', '0'],
+    ['0', '0', '1', '0', '0'],
+    ['0', '0', '0', '1', '1'],
+  ])
+); // expect 3
