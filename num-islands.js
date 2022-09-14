@@ -42,7 +42,7 @@ function dfs(grid, i, j) {
     grid[i][j] === '0'
   )
     return;
-
+  // reassign any values that are '1' to '0'
   grid[i][j] = '0';
   // look in all four directions, and call dfs for each
   dfs(grid, i + 1, j);
@@ -53,9 +53,10 @@ function dfs(grid, i, j) {
 
 var numIslands = function (grid) {
   let count = 0;
-
+  // loop through the grid
   for (let i = 0; i < grid.length; i++) {
     for (let j = 0; j < grid[0].length; j++) {
+      // if the value at the index is '1', increase count by 1 and call dfs
       if (grid[i][j] === '1') {
         count += 1;
         dfs(grid, i, j);
