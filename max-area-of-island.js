@@ -25,47 +25,42 @@ grid[i][j] is either 0 or 1.
  * @return {number}
  */
 
-// perform a depth first search of the matrix (helper fx)
-function dfs(grid, i, j) {
-  // check if the i and j values are valid - if they aren't, return out
-  if (
-    i < 0 ||
-    i >= grid.length ||
-    j < 0 ||
-    j >= grid[0].length ||
-    grid[i][j] === 0
-  )
-    return;
-  // reassign any values that are '1' to '0'
-  grid[i][j] = 0;
-  // look in all four directions, and call dfs for each
-  dfs(grid, i + 1, j);
-  dfs(grid, i - 1, j);
-  dfs(grid, i, j + 1);
-  dfs(grid, i, j - 1);
-}
-
 var maxAreaOfIsland = function (grid) {
   // declare a variable to represent the greatest area of an island, initialized at zero
-  let greatestArea = 0;
-  let temp = 0;
-  console.log('hello');
+  let currMaxArea = 0;
+  let counter = 0;
+  // perform a depth first search of the matrix (helper fx)
+  function dfs(grid, i, j) {
+    // check if the i and j values are valid - if they aren't, return out
+    if (
+      i < 0 ||
+      i >= grid.length ||
+      j < 0 ||
+      j >= grid[0].length ||
+      grid[i][j] === 0
+    )
+      return;
+    // increment counter, and reassign any values that are 1 to 0
+    counter += 1;
+    grid[i][j] = 0;
+    // look in all four directions, and call dfs for each
+    dfs(grid, i + 1, j);
+    dfs(grid, i - 1, j);
+    dfs(grid, i, j + 1);
+    dfs(grid, i, j - 1);
+    return counter;
+  }
   // loop through the grid
   for (let i = 0; i < grid.length; i++) {
     for (let j = 0; j < grid[0].length; j++) {
       // if the value at the index is '1', increase count by 1 and call dfs
       if (grid[i][j] === 1) {
-        temp += 1;
-        // console.log(temp);
-        dfs(grid, i, j);
-      }
-      if (temp > greatestArea) {
-        greatestArea = temp;
+        currMaxArea = Math.max(currMaxArea, dfs(grid, i, j));
+        counter = 0;
       }
     }
   }
-  console.log(greatestArea);
-  return greatestArea;
+  return currMaxArea;
 };
 
 const grid1 = [
@@ -82,3 +77,11 @@ console.log(maxAreaOfIsland(grid1)); // expect 6
 
 const grid2 = [[0, 0, 0, 0, 0, 0, 0, 0]];
 console.log(maxAreaOfIsland(grid2)); // expect 0
+
+const grid3 = [
+  [1, 1, 0, 0, 0],
+  [1, 1, 0, 0, 0],
+  [0, 0, 0, 1, 1],
+  [0, 0, 0, 1, 1],
+];
+console.log(maxAreaOfIsland(grid3)); // expect 4
