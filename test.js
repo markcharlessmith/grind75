@@ -93,3 +93,49 @@ console.log(maxProfit(prices2)); // expect 0
 
 const prices3 = [7, 5, 3, 1, 4, 6];
 console.log(maxProfit(prices3)); // expect 5
+
+/*Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine and false otherwise. Each letter in magazine can only be used once in ransomNote.
+
+Example 1:
+Input: ransomNote = "a", magazine = "b"
+Output: false
+
+Example 2:
+Input: ransomNote = "aa", magazine = "ab"
+Output: false
+
+Example 3:
+Input: ransomNote = "aa", magazine = "aab"
+Output: true
+
+Constraints:
+1 <= ransomNote.length, magazine.length <= 105
+ransomNote and magazine consist of lowercase English letters.*/
+
+function validNoteChecker(ransomNote, magazine) {
+  const ransomNoteArr = ransomNote.split(' ');
+  const magazineArr = magazine.split(' ');
+  const magazineObj = {};
+
+  magazineArr.forEach((word) => {
+    if (!magazineObj[word]) magazineObj[word] = 0;
+    magazineObj[word]++;
+  });
+
+  console.log(magazineObj);
+  let notePossibility = true;
+
+  ransomNoteArr.forEach((word) => {
+    if (magazineObj[word]) {
+      magazineObj[word]--;
+      if (magazineObj[word] < 0) notePossibility = false;
+    } else notePossibility = false;
+  });
+  console.log(notePossibility);
+  return notePossibility;
+}
+
+console.log(validNoteChecker('a', 'b')); // expect false
+console.log(validNoteChecker('aa', 'ab')); // expect false
+console.log(validNoteChecker('aa', 'aab')); // expect true
+console.log(validNoteChecker('the moon is cool', 'the cool is moon'));
