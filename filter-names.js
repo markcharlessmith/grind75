@@ -34,11 +34,11 @@ function filterNames(arr) {
   const result = {};
   let count = 1;
   // using filter
-  arr = arr.filter((index) => typeof index === 'string');
-  console.log(arr);
+  const filteredArr = arr.filter((index) => typeof index === 'string');
+  console.log(filteredArr);
 
-  for (let i = 0; i < arr.length; i++) {
-    result[count] = arr[i];
+  for (let i = 0; i < filteredArr.length; i++) {
+    result[count] = filteredArr[i];
     count += 1;
   }
   if (!result[count - 1]) return 'No names present in input';
