@@ -26,6 +26,7 @@ All the numbers of nums are unique.
 //     results.push([...subset]);
 //   } else {
 //     subsets(nums, depth + 1, subset, results);
+//     // console.log(nums[depth])
 //     subset.push(nums[depth]);
 //     subsets(nums, depth + 1, subset, results);
 //     subset.pop();
@@ -39,7 +40,6 @@ function subsets(nums) {
 
   const generateSubset = (nums, subset = []) => {
     if (!nums.length) return result.push(subset);
-
     generateSubset(nums.slice(1), [...subset, nums[0]]); // take it
     generateSubset(nums.slice(1), subset); // leave it
   };
