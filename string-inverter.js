@@ -1,5 +1,5 @@
 // Create a function that will accept a string as an input, and return the 'inverse' (not reverse) of that string as output.
-// Ex. 1 
+// Ex. 1
 // Input: 'abc'
 // Output: 'zyx'
 // Ex. 2
@@ -8,9 +8,9 @@
 // Ex. 3
 // Input: 'javascript'
 // Output: 'qzezhxirkg'
-var stringInverter(str) {
+// var stringInverter(str) {
 
-}
+// }
 
 function stringInverter(str) {
   const result = {};
@@ -42,7 +42,7 @@ function stringInverter(str) {
     'y',
     'z',
   ];
-  //iterate through the string
+  //iterate through the alphabet
   for (let i = 0; i < alphabet.length; i++) {
     let tempAlph = alphabet;
     result[alphabet[i]] = alphabet[alphabet.length - 1];
