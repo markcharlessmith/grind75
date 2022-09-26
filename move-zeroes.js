@@ -18,46 +18,47 @@ Follow up: Could you minimize the total number of operations done?*/
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
+
+// solution #1
 // var moveZeroes = function (nums) {
-//   // loop through nums
+//   let zeroCount = 0;
 //   for (let i = 0; i < nums.length; i++) {
-//     console.log(nums[i]);
-//     if (nums[i] === 0) {
-//       nums.push(0);
-//       nums.splice(i, 1);
-//       // console.log(nums);
-//     }
-//     // if (nums[0] === 0) {
-//     //   nums.push(0);
-//     //   nums.splice(i, 1);
-//     // }
-//     return nums;
+//     if (nums[i] === 0) zeroCount += 1;
 //   }
+
+//   const result = [];
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] !== 0) {
+//       result.push(nums[i]);
+//     }
+//   }
+
+//   while (zeroCount) {
+//     result.push(0);
+//     zeroCount--;
+//   }
+
+//   // return result;
+//   for (let i = 0; i < nums.length; i++) {
+//     nums[i] = result[i];
+//   }
+//   return nums;
 // };
 
 // optimized solution
 var moveZeroes = function (nums) {
-  let zeroCount = 0;
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] === 0) zeroCount += 1;
-  }
+  let nonZero = 0;
 
-  const result = [];
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] !== 0) {
-      result.push(nums[i]);
+      nums[nonZero++] = nums[i];
     }
   }
 
-  while (zeroCount) {
-    result.push(0);
-    zeroCount--;
+  for (let i = nonZero; i < nums.length; i++) {
+    nums[i] = 0;
   }
 
-  // return result;
-  for (let i = 0; i < nums.length; i++) {
-    nums[i] = result[i];
-  }
   return nums;
 };
 
