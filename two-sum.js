@@ -61,5 +61,5 @@ console.log(twoSum([-1, -4, -5, 3, -7, 2, 14], -8));
 console.log(twoSum([1, 2, 5, 7], 10));
 // => should return 'No two numbers sum to the target.' - demonstrating that the same element is not being used twice (5+5)
 
-// console.log(twoSum([1, 2, 3, 7], 11));
+console.log(twoSum([1, 2, 3, 7], 11));
 // => should return 'No two numbers sum to the target.'
