@@ -20,82 +20,118 @@ n == matrix[i].length
  * @param {number[][]} matrix
  * @return {number[]}
  */
+// solution
 // var spiralOrder = function (matrix) {
-//   // edge cases
 //   if (matrix.length === 0 || matrix[0].length === 0) return [];
-//   if (matrix.length === 1 || matrix[0].length === 1) return matrix.flat();
 
+//   let left = 0;
+//   let right = matrix[0].length - 1;
+//   let top = 0;
+//   let bottom = matrix.length - 1;
 //   const result = [];
-//   // add the first subarray to result
-//   result.push(matrix[0]);
 
-//   let turnPoint = matrix[0].length - 1;
+//   while (left <= right && top <= bottom) {
+//     for (let i = left; i <= right; i++) {
+//       result.push(matrix[top][i]);
+//     }
 
-//   for (let i = 1; i < matrix.length; i++) {
-//     if (matrix[i + 1]) {
-//       console.log(matrix[i][turnPoint]);
-//       result.push(matrix[i][turnPoint]);
-//       matrix[i].pop();
-//     } else {
-//       //
-//       result.push(matrix[i][turnPoint]);
-//       while (turnPoint > 0) {
-//         result.push(matrix[i][turnPoint - 1]);
-//         turnPoint--;
+//     top++;
+
+//     for (let i = top; i <= bottom; i++) {
+//       result.push(matrix[i][right]);
+//     }
+
+//     right--;
+
+//     if (top <= bottom) {
+//       for (let i = right; i >= left; i--) {
+//         result.push(matrix[bottom][i]);
 //       }
+
+//       bottom--;
+//     }
+
+//     if (left <= right) {
+//       for (let i = bottom; i >= top; i--) {
+//         result.push(matrix[i][left]);
+//       }
+
+//       left++;
 //     }
 //   }
-//   matrix.shift();
-//   matrix.pop();
 
-//   // an additional iteration is needed here, while matrix.length > 0 (handle additional spirals)
-
-//   if (matrix[0]) result.push(matrix[0]);
-
-//   return result.flat();
+//   return result;
 // };
 
+/*
+Given an m x n matrix, return all elements of the matrix in spiral order.
+
+Example 1:
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [1,2,3,6,9,8,7,4,5]
+
+Example 2:
+Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+ 
+Constraints:
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 10
+-100 <= matrix[i][j] <= 100
+*/
+
+// O(n) space complexity, O(n) time complexity
 var spiralOrder = function (matrix) {
-  if (matrix.length === 0 || matrix[0].length === 0) return [];
-
-  let left = 0;
-  let right = matrix[0].length - 1;
-  let top = 0;
-  let bottom = matrix.length - 1;
+  if (!matrix.length) return [];
+  // array to store result
   const result = [];
-
-  while (left <= right && top <= bottom) {
-    for (let i = left; i <= right; i++) {
-      result.push(matrix[top][i]);
+  // start row is 0, end row is matrix.length - 1
+  // start column is 0, end column is matrix[0].length - 1
+  let startRow = 0,
+    endRow = matrix.length - 1;
+  let startColumn = 0,
+    endColumn = matrix[0].length - 1;
+  // while loop which checks to see if our start row is less than or equal to our end row
+  // and our start column <= our end column
+  while (startRow <= endRow && startColumn <= endColumn) {
+    // loop through rows and columns
+    // variables - increment/decrement
+    // ++ startRow after loop while also ++ startColumn, -- endRow -- endColumn
+    // go right
+    for (let column = startColumn; column <= endColumn; column++) {
+      result.push(matrix[startRow][column]);
     }
-
-    top++;
-
-    for (let i = top; i <= bottom; i++) {
-      result.push(matrix[i][right]);
+    // go down
+    for (let row = startRow + 1; row <= endRow; row++) {
+      result.push(matrix[row][endColumn]);
     }
-
-    right--;
-
-    if (top <= bottom) {
-      for (let i = right; i >= left; i--) {
-        result.push(matrix[bottom][i]);
-      }
-
-      bottom--;
+    // go left
+    for (let column = endColumn - 1; column >= startColumn; column--) {
+      if (endRow > startRow) result.push(matrix[endRow][column]);
     }
-
-    if (left <= right) {
-      for (let i = bottom; i >= top; i--) {
-        result.push(matrix[i][left]);
-      }
-
-      left++;
+    // go up
+    for (let row = endRow - 1; row > startRow; row--) {
+      if (endColumn > startColumn) result.push(matrix[row][startColumn]);
     }
+    // increment and decrement values so not going in circle
+    startRow += 1;
+    endRow -= 1;
+    startColumn += 1;
+    endColumn -= 1;
   }
-
+  // return result
   return result;
 };
+
+const matrix0 = [
+  [1, 2, 3, 4, 5],
+  [6, 7, 8, 9, 10],
+  [11, 12, 13, 14, 15],
+  [16, 17, 18, 19, 20],
+];
+
+console.log(spiralOrder(matrix0));
 
 const matrix1 = [
   [1, 2, 3],
