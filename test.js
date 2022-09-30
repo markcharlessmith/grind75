@@ -135,7 +135,7 @@ function validNoteChecker(ransomNote, magazine) {
   return notePossibility;
 }
 
-console.log(validNoteChecker('a', 'b')); // expect false
-console.log(validNoteChecker('aa', 'ab')); // expect false
+// console.log(validNoteChecker('a', 'b')); // expect false
+// console.log(validNoteChecker('aa', 'ab')); // expect false
 console.log(validNoteChecker('aa', 'aab')); // expect true
-console.log(validNoteChecker('the moon is cool', 'the cool is moon'));
+// console.log(validNoteChecker('the moon is cool', 'the cool is moon')); // expect true
