@@ -18,7 +18,7 @@ Constraints:
  */
 var generateMatrix = function (n) {
   // constraints as specified in problem & add'l edge case
-  if (n < 0 || n > 20 || typeof n !== 'number') return undefined;
+  if (n < 0 || n >= 20 || typeof n !== 'number') return undefined;
 
   // create a result array
   const result = [];
