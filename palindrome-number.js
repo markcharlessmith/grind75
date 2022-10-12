@@ -4,6 +4,8 @@ Given an integer x, return true if x is palindrome integer.
 An integer is a palindrome when it reads the same backward as forward.
 
 For example, 121 is a palindrome while 123 is not.
+
+Do not coerce the integer x to a string.
  
 
 Example 1:
@@ -34,12 +36,13 @@ function isPalindrome(n) {
     x = n % 10;
     n = parseInt(n / 10);
     temp = temp * 10 + x;
+    console.log(temp);
   }
 
-  return temp === y ? true : false;
+  return temp === y;
 }
 
-console.log(isPalindrome(121));
-console.log(isPalindrome(-121));
-console.log(isPalindrome(10));
-console.log(isPalindrome());
+// console.log(isPalindrome(121));
+// console.log(isPalindrome(-121));
+// console.log(isPalindrome(10));
+// console.log(isPalindrome());
