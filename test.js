@@ -139,3 +139,70 @@ function validNoteChecker(ransomNote, magazine) {
 // console.log(validNoteChecker('aa', 'ab')); // expect false
 console.log(validNoteChecker('aa', 'aab')); // expect true
 // console.log(validNoteChecker('the moon is cool', 'the cool is moon')); // expect true
+
+// longestPalindrome
+/*iven a string s which consists of lowercase or uppercase letters, return the length of the longest palindrome that can be built with those letters.
+
+Letters are case sensitive, for example, "Aa" is not considered a palindrome here.
+
+ 
+
+Example 1:
+
+Input: s = "abccccdd"
+Output: 7
+Explanation: One longest palindrome that can be built is "dccaccd", whose length is 7.
+Example 2:
+
+Input: s = "a"
+Output: 1
+Explanation: The longest palindrome that can be built is "a", whose length is 1.
+ 
+
+Constraints:
+
+1 <= s.length <= 2000
+s consists of lowercase and/or uppercase English letters only.
+*/
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var longestPalindrome = function (s) {
+  // edge cases
+  if (s.length === 0) return 0;
+  if (s.length === 1) return 1;
+  // account for case difference
+  // s = s.toLowerCase();
+
+  let length = 0;
+  const letters = {};
+  // count the instances of each char
+  for (let i = 0; i < s.length; i++) {
+    letters[s[i]] ? (letters[s[i]] += 1) : (letters[s[i]] = 1);
+  }
+  console.log(letters);
+
+  // iterate through the keys of letters
+  for (const key in letters) {
+    if (letters[key] % 2 === 0) {
+      length += letters[key];
+    }
+  }
+
+  for (const key in letters) {
+    if (s.length > length) length += letters[key];
+    return length;
+  }
+};
+
+console.log(longestPalindrome('abccccdd')); // expect 7
+console.log(longestPalindrome('a')); // expect 1
+console.log(longestPalindrome('aabbccccc')); // expect 9
+console.log(longestPalindrome('aabcc')); // expect 5
+console.log(longestPalindrome('aabcd')); // expect 3
+console.log(longestPalindrome('b')); // expect 1
+console.log(longestPalindrome('')); //expect 0
+console.log(longestPalindrome('aa')); // expect 2
+console.log(longestPalindrome('ccc')); // expect 3
+console.log(longestPalindrome('ccd')); // expect 3
