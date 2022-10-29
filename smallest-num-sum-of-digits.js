@@ -24,10 +24,10 @@ function getSum(n) {
 // Function to find the smallest number whose sum of digits is also N
 function smallestNum(N) {
   let i = 1;
-  while (1) {
+  while (i) {
     // Checking if number has
     // sum of digits = N
-    if (getSum(i) == N) {
+    if (getSum(i) === N) {
       return i;
     }
     i++;
