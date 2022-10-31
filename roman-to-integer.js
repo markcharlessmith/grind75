@@ -68,31 +68,38 @@ const substractions = new Set(['IV', 'IX', 'XL', 'XC', 'CD', 'CM']);
 // helper function to check if there is an invalid char
 const getSymbolValue = (char) => {
   if (!(char in letterValues)) {
-    throw new Error('Input is not a Roman numeral');
+    throw new Error('error');
   }
   return letterValues[char];
 };
 
 var romanToInt = function (s) {
-  if (typeof s !== 'string') return 'please input a string';
-  let integer = 0;
-  for (let i = 0; i < s.length; i++) {
-    const currentSymbol = s[i];
-    const nextSymbol = s[i + 1];
-    const symbolValue = getSymbolValue(currentSymbol);
-    if (i !== s.length && substractions.has(`${currentSymbol}${nextSymbol}`)) {
-      integer += getSymbolValue(nextSymbol) - symbolValue;
-      i++; // Skip next symbol, already evaluated
-    } else {
-      integer += symbolValue;
+  try {
+    if (typeof s !== 'string') return 'please input a string';
+    let integer = 0;
+    for (let i = 0; i < s.length; i++) {
+      // two pointers (curr, next)
+      const curr = s[i];
+      const next = s[i + 1];
+      const symbolValue = getSymbolValue(curr);
+      if (i !== s.length && substractions.has(`${curr}${next}`)) {
+        integer += getSymbolValue(next) - symbolValue;
+        // console.log(getSymbolValue(next) - symbolValue)
+        i++; // Skip next symbol, already evaluated
+      } else {
+        integer += symbolValue;
+      }
     }
+    return integer;
+  } catch (e) {
+    console.log(e);
+    return 'error happened. whoops!';
   }
-  return integer;
 };
 
-console.log(romanToInt('III')); // expect 3
-console.log(romanToInt('LVIII')); // expect 58
-console.log(romanToInt('MCMXCIV')); // expect 1994
-console.log(romanToInt('')); // expect 0
+// console.log(romanToInt('III')); // expect 3
+// console.log(romanToInt('LVIII')); // expect 58
+// console.log(romanToInt('MCMXCIV')); // expect 1994
+// console.log(romanToInt('')); // expect 0
+console.log(romanToInt('Q')); // expect error happened.  whoops!
 console.log(romanToInt(8)); // expect 'please input a string'
-console.log(romanToInt('Q')); // expect Error: Input is not a Roman numeral
