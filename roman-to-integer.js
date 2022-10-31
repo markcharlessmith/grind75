@@ -48,9 +48,10 @@ It is guaranteed that s is a valid roman numeral in the range [1, 3999].
  * @return {number}
  */
 
-// check if the string has invalid letters in it
+// how to check if the input string contains invalid characters using regex:
 // if (s.match(/[.A-B.E-H.J-K.N-U.W.Y-Z]+/g)) return 'error';
 
+// create an object to store the letters and their associated values
 const letterValues = {
   I: 1,
   V: 5,
@@ -61,16 +62,19 @@ const letterValues = {
   M: 1000,
 };
 
+// create a new Set which contains the subtractions (as opposed to the additions)
 const substractions = new Set(['IV', 'IX', 'XL', 'XC', 'CD', 'CM']);
 
+// helper function to check if there is an invalid char
 const getSymbolValue = (char) => {
   if (!(char in letterValues)) {
-    throw new Error('Symbol is not a numeral');
+    throw new Error('Input is not a Roman numeral');
   }
   return letterValues[char];
 };
 
 var romanToInt = function (s) {
+  if (typeof s !== 'string') return 'please input a string';
   let integer = 0;
   for (let i = 0; i < s.length; i++) {
     const currentSymbol = s[i];
@@ -86,8 +90,9 @@ var romanToInt = function (s) {
   return integer;
 };
 
-console.log(romanToInt('III'));
-console.log(romanToInt('LVIII'));
-console.log(romanToInt('MCMXCIV'));
-console.log(romanToInt(''));
-console.log(romanToInt('Q'));
+console.log(romanToInt('III')); // expect 3
+console.log(romanToInt('LVIII')); // expect 58
+console.log(romanToInt('MCMXCIV')); // expect 1994
+console.log(romanToInt('')); // expect 0
+console.log(romanToInt(8)); // expect 'please input a string'
+console.log(romanToInt('Q')); // expect Error: Input is not a Roman numeral
