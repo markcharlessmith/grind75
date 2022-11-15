@@ -206,3 +206,40 @@ console.log(longestPalindrome('')); //expect 0
 console.log(longestPalindrome('aa')); // expect 2
 console.log(longestPalindrome('ccc')); // expect 3
 console.log(longestPalindrome('ccd')); // expect 3
+
+const myUsername = 'Mark';
+
+let sum = 0;
+sum = 1;
+console.log(sum);
+
+const result = [1, 2, 3, 4, 5];
+result.push('Banana');
+console.log(result);
+
+const myObj = { name: 'Scott', programmer: true };
+myObj.pets = { name: 'Wilbur' };
+console.log(myObj);
+
+// const subtractor = (n) => {
+//   return n - 1;
+// }
+
+function subtractor(m, n) {
+  let difference = m - n;
+  return difference;
+}
+// console.log(difference)
+
+console.log(subtractor(5, 3));
+
+2 == '2';
+2 === 2;
+
+console.log(2 == '2');
+console.log(2 === 2);
+console.log(2 === '2');
+console.log(2 != '3');
+console.log(2 !== '2');
+
+console.log(typeof myObj);

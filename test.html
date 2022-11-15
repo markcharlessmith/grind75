@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<div lang="en">
+<head>
+    <title>test</title>
+    <link href="Whittemore-temp-conversion.css" type="text/css" rel="stylesheet">
+    <link href="../global.css" type="text/css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<div id="container">
+    <h1 class="app-header">Welcome to the Temperature Conversion App!</h1>
+    
+        <div class="card">
+            <div class="card-title">Fahrenheit to Celsius Converter</div>
+                <div class="card-content">
+                    <div class="form">
+                        <div class="form-field">
+                            <label value="Fahrenheit value" for="txtFahrenheit">Fahrenheit value:</label>
+                            <input type="text" id="txtFahrenheit" name="txtFahrenheit" class="input"></div>
+                            <div class="form-field">
+                            <button id="btnConvert" class="btn btn-primary" onclick="myFunction()">Convert Temperature</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <div id="container">
+        <div class="card">
+            <div class="card-title">Conversion Results.</div>
+                <div class="card-content" id="conversionResults"></div>
+                </div>
+                </div>
+    
+                <a href="../index.html" class="return-home">Return</a>
+            </div>          
+<script>
+document.getElementById("btnConvert").onclick;
+function myFunction() {
+    let fahrenheit = document.getElementById("txtFahrenheit").value; 
+    console.log(typeof fahrenheit)
+    let conversionResults = ((parseFloat(fahrenheit) - 32) / 1.8).toFixed(2);
+    document.getElementById("conversionResults").innerHTML = conversionResults;
+}
+
+</script>
+</body>

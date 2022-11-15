@@ -97,9 +97,9 @@ var romanToInt = function (s) {
   }
 };
 
-// console.log(romanToInt('III')); // expect 3
-// console.log(romanToInt('LVIII')); // expect 58
-// console.log(romanToInt('MCMXCIV')); // expect 1994
-// console.log(romanToInt('')); // expect 0
+console.log(romanToInt('III')); // expect 3
+console.log(romanToInt('LVIII')); // expect 58
+console.log(romanToInt('MCMXCIV')); // expect 1994
+console.log(romanToInt('')); // expect 0
 console.log(romanToInt('Q')); // expect error happened.  whoops!
 console.log(romanToInt(8)); // expect 'please input a string'
