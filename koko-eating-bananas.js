@@ -41,25 +41,45 @@ piles.length <= h <= 109
 // };
 
 // optimized solution
-const minEatingSpeed = (piles, h) => {
-  let min = 1,
-    max = Math.max(...piles),
-    best = max;
+// const minEatingSpeed = (piles, h) => {
+//   let min = 1,
+//     max = Math.max(...piles),
+//     best = max;
 
-  const time = (speed) =>
-    piles.reduce((sum, pile) => sum + Math.ceil(pile / speed), 0);
+//   const time = (speed) =>
+//     piles.reduce((sum, pile) => sum + Math.ceil(pile / speed), 0);
 
-  while (min <= max) {
-    const mid = Math.floor((min + max) / 2);
+//   while (min <= max) {
+//     const mid = Math.floor((min + max) / 2);
 
-    if (time(mid) <= h) {
-      best = mid;
-      max = mid - 1;
-    } else min = mid + 1;
+//     if (time(mid) <= h) {
+//       best = mid;
+//       max = mid - 1;
+//     } else min = mid + 1;
+//   }
+
+//   return best;
+// };
+
+//
+function minEatingSpeed(piles, h) {
+  let result = Math.max(...piles);
+  let [left, right] = [1, result];
+
+  while (left <= right) {
+    let hours = 0;
+    let k = Math.floor((left + right) / 2);
+    for (let pile of piles) {
+      hours += Math.ceil(pile / k);
+    }
+    if (hours <= h) {
+      result = Math.min(result, k);
+      right = k - 1;
+    } else left = k + 1;
   }
 
-  return best;
-};
+  return result;
+}
 
 console.log(minEatingSpeed([3, 6, 7, 11], 8)); // expect 4
 console.log(minEatingSpeed([30, 11, 23, 4, 20], 5)); // expect 30
