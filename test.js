@@ -243,3 +243,19 @@ console.log(2 != '3');
 console.log(2 !== '2');
 
 console.log(typeof myObj);
+
+let now = new Date();
+let nowNow = `${now.getMonth() + 1}/${now.getDate()}`;
+console.log(nowNow);
+
+// let res = 0;
+// let num = 5;
+
+// while (num > res) {
+//   res++;
+//   console.log(res);
+//   num--;
+//   console.log(num);
+// }
+
+// console.log(res);
