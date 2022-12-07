@@ -25,7 +25,33 @@ Constraints:
 a + b + c > 0
 */
 
-function longestDiverseString(a, b, c) {}
+function longestDiverseString(a, b, c) {
+  let letters = [
+    [a, 'a'],
+    [b, 'b'],
+    [c, 'c'],
+  ];
+
+  letters = letters.flat();
+  console.log(letters);
+
+  const newLetters = [];
+
+  for (let i = 0; i < letters.length; i++) {
+    if (typeof letters[i] === 'number') {
+      let counter = letters[i];
+      while (counter > 0) {
+        newLetters.push(letters[i + 1]);
+        counter--;
+      }
+    }
+
+    console.log(newLetters);
+
+    let newString = '';
+    for (let i = 0; i < newLetters.length; i++) {}
+  }
+}
 
 console.log(longestDiverseString(1, 1, 7)); // expect "ccaccbcc" or "ccbccacc"
 // console.log(longestDiverseString(7, 1, 0)); // expect "aabaa"
