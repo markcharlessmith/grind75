@@ -15,12 +15,12 @@
 //   return false;
 // }
 
-// optimal permuted solution using sort and reverse
+// optimal permuted solution using sort
 function twoArrays(k: number, a: number[], b: number[]) {
   let n: number = a.length;
   if (!a || !b || !a.length || !b.length) return false;
   a.sort((a, b) => a - b);
-  b.sort((a, b) => a - b).reverse();
+  b.sort((a, b) => b - a);
   for (let i = 0; i < n; i++) if (a[i] + b[i] < k) return false;
   return true;
 }
