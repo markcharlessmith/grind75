@@ -15,17 +15,17 @@ Constraints:
 s and t consist of lowercase English letters.*/
 
 // sort and compare
-function anagramalizer(s, t) {
-  // check if the strings are the same length, return false if different lengths
-  if (s.length !== t.length) return false;
-  // split the stings, and sort them
-  const firstSorted = s.split('').sort().join('');
-  const secondSorted = t.split('').sort().join('');
-  // compare the two strings
-  console.log(firstSorted, secondSorted);
-  if (firstSorted === secondSorted) return true;
-  return false;
-}
+// function anagramalizer(s, t) {
+//   // check if the strings are the same length, return false if different lengths
+//   if (s.length !== t.length) return false;
+//   // split the stings, and sort them
+//   const firstSorted = s.split('').sort().join('');
+//   const secondSorted = t.split('').sort().join('');
+//   // compare the two strings
+//   console.log(firstSorted, secondSorted);
+//   if (firstSorted === secondSorted) return true;
+//   return false;
+// }
 
 const str1 = 'anagram';
 const str2 = 'nagaram';
@@ -34,6 +34,8 @@ console.log(anagramalizer(str1, str2)); // should print: true
 const str3 = 'rat';
 const str4 = 'car';
 console.log(anagramalizer(str3, str4)); // should print: false
+
+// solution using an object
 
 /*Follow up: What if the inputs contain Unicode characters? How would you adapt your solution to such a case?*/
 

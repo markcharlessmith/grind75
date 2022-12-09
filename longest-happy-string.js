@@ -25,33 +25,86 @@ Constraints:
 a + b + c > 0
 */
 
-function longestDiverseString(a, b, c) {
-  let letters = [
-    [a, 'a'],
-    [b, 'b'],
-    [c, 'c'],
+// function longestDiverseString(a, b, c) {
+//   let letters = [
+//     [a, 'a'],
+//     [b, 'b'],
+//     [c, 'c'],
+//   ];
+
+//   letters = letters.flat();
+//   console.log(letters);
+
+//   const newLetters = [];
+
+//   for (let i = 0; i < letters.length; i++) {
+//     if (typeof letters[i] === 'number') {
+//       let counter = letters[i];
+//       while (counter > 0) {
+//         newLetters.push(letters[i + 1]);
+//         counter--;
+//       }
+//     }
+
+//     console.log(newLetters);
+
+//     let newString = '';
+//     for (let i = 0; i < newLetters.length; i++) {}
+//   }
+// }
+
+// function longestDiverseString(a, b, c) {
+// while (a > 0 || b > 0 || c > 0)
+// }
+
+function happyStrings(a, b, c) {
+  //take the longest input and start with that
+
+  //store input as objects with key as the letter and max frequency as the value
+  const inputs = [
+    ['a', a],
+    ['b', b],
+    ['c', c],
   ];
+  console.log(inputs);
+  //declare longestHappyString and assign it an empty string
+  let longestHappyString =
+    //while loop as long as the biggest value among a,b,c is greater than zero
+    //if the biggest is greater than zero
+    //if the current last character in the longestHappyString is the current character then continue
+    //if it's greater than 2 concaticate 2 letters
+    //else concatinate 1
 
-  letters = letters.flat();
-  console.log(letters);
+    //if the second biggest is greater than zero
+    //if the current last character in the longestHappyString is the current character then continue
+    //if the it's greater than 2 concaticate 2 letters
+    //else concatinate 1
 
-  const newLetters = [];
+    //if the third biggest is greater than zero
+    //if the current last character in the longestHappyString is the current character then continue
+    //if it's greater than 2 concatinate 2 letters
+    // else concatinate 1
 
-  for (let i = 0; i < letters.length; i++) {
-    if (typeof letters[i] === 'number') {
-      let counter = letters[i];
-      while (counter > 0) {
-        newLetters.push(letters[i + 1]);
-        counter--;
-      }
-    }
+    //concatinate each letter
 
-    console.log(newLetters);
+    //if current value is greater than two concaticate 2 letters
 
-    let newString = '';
-    for (let i = 0; i < newLetters.length; i++) {}
-  }
+    //go to next (biggest) unique letter
+
+    //take the string we've generated and check it to see if it is happy
+    //use a helper function
+    function isHappy(str) {
+      // loop through the string (for loop)
+      //if (str[i] === str[i + 1] && str[i] === str[i + 2])
+      // remove str[i + 2]
+      //  if (str[str.length - 1] === str[i])
+    };
 }
 
-console.log(longestDiverseString(1, 1, 7)); // expect "ccaccbcc" or "ccbccacc"
+/********* Uncomment these lines to test your work! *********/
+// 'aabaabaabaa'  'a:8,b:3'
+console.log(happyStrings(1, 1, 7)); // should log: 'ccaccbcc' or 'ccbccacc'
+// console.log(happyStrings(7, 1, 0)); // should log: 'aabaa'
+
+// console.log(longestDiverseString(1, 1, 7)); // expect "ccaccbcc" or "ccbccacc"
 // console.log(longestDiverseString(7, 1, 0)); // expect "aabaa"
