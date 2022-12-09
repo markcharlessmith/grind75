@@ -18,7 +18,8 @@
 // optimal permuted solution using sort and reverse
 function twoArrays(k, a, b) {
   let n = a.length;
-  if (!a || !b) return false;
+
+  if (!a || !b || !a.length || !b.length) return false;
 
   a.sort((a, b) => a - b);
 
@@ -36,4 +37,4 @@ console.log(twoArrays(4, [4], [0])); // expect true;
 console.log(twoArrays(0, [1], [-1])); // expect true;
 console.log(twoArrays(2, [2])); // expect false;
 console.log(twoArrays(3, [1, 2, 3, 4, 0], [2, 1, 0, -1, 0])); // expect false;
-console.log(twoArrays(7, [5, 4], [3, 2]));
+console.log(twoArrays(7, [5, 4], [3, 2])); // expect true;
