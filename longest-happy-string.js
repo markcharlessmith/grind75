@@ -129,12 +129,74 @@ Constraints:
 a + b + c > 0
 */
 
-function happyStrings(a, b, c) {}
-
 /********* Uncomment these lines to test your work! *********/
 // 'aabaabaabaa'  'a:8,b:3'
-// console.log(happyStrings(1, 1, 7)); // should log: 'ccaccbcc' or 'ccbccacc'
-// console.log(happyStrings(7, 1, 0)); // should log: 'aabaa'
+
+// function happyStrings(a, b, c) {
+//   const letters = { a: a, b: b, c: c };
+//   let resultingString = '';
+//   if (letters.a === letters.b && letters.b === letters.c) {
+//     while (letters.a > 1 && letters.b > 1 && letters.c > 1) {
+//       resultingString += 'aa';
+//       letters.a -= 2;
+//       resultingString += 'bb';
+//       letters.b -= 2;
+//       resultingString += 'cc';
+//       letters.c -= 2;
+//     }
+//     resultingString += 'a';
+//     letters.a -= 1;
+//     resultingString += 'b';
+//     letters.b -= 1;
+//     resultingString += 'c';
+//     letters.c -= 1;
+//   }
+//   return resultingString;
+
+//   // get the letter with the most value
+//   // get the letter with the next most
+//   // get the letter with the least value
+// }
+
+function happyStrings(a, b, c) {
+  const letters = [
+    ['a', a, 0],
+    ['b', b, 0],
+    ['c', c, 0],
+  ];
+  letters.sort((a, b) => b[1] - a[1]);
+  // make an array that you're pushing too
+  const result = [];
+  let sum = a + b + c;
+  let lastChar = '';
+
+  while (result.length < sum) {
+    let counter = 0;
+    while (counter < 3) {
+      if (lastChar !== letters[counter][0]) {
+        letters[counter][2] = 0;
+      }
+      counter++;
+    }
+    let i = 0;
+    while (i < 3 && letters[i][2] === 2) {
+      i++;
+    }
+    if (letters[i] && letters[i][1] > 0) {
+      result.push(letters[i][0]);
+      lastChar = letters[i][0];
+      (letters[i][1] -= 1), (letters[i][2] += 1);
+      letters.sort((a, b) => b[1] - a[1]);
+    } else return result.join('');
+  }
+
+  console.log(result);
+
+  //join at the end and return result
+  return result.join('');
+}
 
 console.log(happyStrings(1, 1, 7)); // expect "ccaccbcc" or "ccbccacc"
-console.log(happyStrings(7, 1, 0)); // expect "aabaa"
+// console.log(happyStrings(7, 1, 0)); // expect "aabaa"
+// console.log(happyStrings(3, 3, 3)); // expect "aabbccabc"
+// console.log(happyStrings(3, 12, 5)); // expect ?????
