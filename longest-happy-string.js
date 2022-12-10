@@ -178,10 +178,13 @@ function happyStrings(a, b, c) {
       }
       counter++;
     }
+
     let i = 0;
     while (i < 3 && letters[i][2] === 2) {
+      // console.log(result)
       i++;
     }
+
     if (letters[i] && letters[i][1] > 0) {
       result.push(letters[i][0]);
       lastChar = letters[i][0];
@@ -190,13 +193,13 @@ function happyStrings(a, b, c) {
     } else return result.join('');
   }
 
-  console.log(result);
-
   //join at the end and return result
   return result.join('');
 }
 
 console.log(happyStrings(1, 1, 7)); // expect "ccaccbcc" or "ccbccacc"
 // console.log(happyStrings(7, 1, 0)); // expect "aabaa"
-// console.log(happyStrings(3, 3, 3)); // expect "aabbccabc"
-// console.log(happyStrings(3, 12, 5)); // expect ?????
+// console.log(happyStrings(3, 3, 3)); // expect "aabbccabc" or "abccbaabc"
+// console.log(happyStrings(3, 12, 5)); // expect "bbcbbcbbcbbabbabccba"
+// console.log(happyStrings(1, 1, 1)); // expect "abc"
+// console.log(happyStrings(0, 0, 0)); // expect ""
