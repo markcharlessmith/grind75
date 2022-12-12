@@ -11,14 +11,14 @@ Here follow means a full match, such that there is a bijection between a letter 
 var wordPattern = function (pattern, s) {
   const pairs = {};
 
-  // split the strings
+  if (pattern.length === 0 && s.length === 0) return true;
+
   const pArr = pattern.split('');
   const sArr = s.split(' ');
-  console.log(sArr, pArr);
+
   if (pArr.length !== sArr.length) return false;
   if (sArr.every((element) => pArr.includes(element))) return true;
 
-  // iterate through s and assign k/v pair in pairs
   for (let i = 0; i < sArr.length; i++) {
     if (!pairs[pArr[i]] && sArr[i] !== pairs[pArr[i - 1]]) {
       pairs[pArr[i]] = sArr[i];
@@ -34,7 +34,6 @@ var wordPattern = function (pattern, s) {
 
   if (hasDuplicates(exists)) return false;
 
-  // check if the two are the same
   for (let i = 0; i < sArr.length; i++) {
     console.log(pairs[pArr[i]], sArr[i]);
     if (pairs[pArr[i]] !== sArr[i]) return false;
@@ -47,4 +46,7 @@ console.log(wordPattern('abbc', 'dog dog cat fish')); // expect false;
 console.log(wordPattern('abb', 'dog')); // expect false;
 console.log(wordPattern('abba', 'dog dog dog dog')); // expect false;
 console.log(wordPattern('abc', 'dog cat dog')); // expect false;
-console.log(wordPattern('deadbeef', 'd e a d b e e f'));
+console.log(wordPattern('deadbeef', 'd e a d b e e f')); // expect true;
+console.log(wordPattern('tqbf', 'the quick brown fox')); // expect true;
+console.log(wordPattern('sausages!', 'the best is the best of all the rest')); // expect true
+console.log(wordPattern('', ''));
