@@ -165,10 +165,10 @@ function happyStrings(a, b, c) {
     ['c', c, 0],
   ];
   letters.sort((a, b) => b[1] - a[1]);
-  // make an array that you're pushing too
-  const result = [];
-  let sum = a + b + c;
+
   let lastChar = '';
+  let sum = a + b + c;
+  const result = [];
 
   while (result.length < sum) {
     let counter = 0;
@@ -181,7 +181,6 @@ function happyStrings(a, b, c) {
 
     let i = 0;
     while (i < 3 && letters[i][2] === 2) {
-      // console.log(result)
       i++;
     }
 
@@ -193,7 +192,6 @@ function happyStrings(a, b, c) {
     } else return result.join('');
   }
 
-  //join at the end and return result
   return result.join('');
 }
 

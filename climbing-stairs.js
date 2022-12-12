@@ -44,33 +44,34 @@ Constraints:
 */
 
 // bottom up solution
-const climbStairs = function (n) {
-  let steps = [1, 1];
-  for (let i = 2; i <= n; i++) {
-    steps.push(steps[i - 1] + steps[i - 2]);
-  }
-  // console.log(n, steps)
-  return steps[n];
-};
+// const climbStairs = function (n) {
+//   let steps = [1, 1];
+//   for (let i = 2; i <= n; i++) {
+//     steps.push(steps[i - 1] + steps[i - 2]);
+//   }
+//   // console.log(n, steps)
+//   return steps[n];
+// };
 
 // top down solution
-// const climbStairs = function (n) {
-//   let cache = {};
+const climbStairs = function (n) {
+  let cache = {};
 
-//   const howManyWays = function (n) {
-//     // console.log(cache)
-//     if (n in cache) {
-//       return cache[n];
-//     }
-//     if (n < 4) {
-//       cache[n] = n;
-//       return cache[n];
-//     }
-//     cache[n] = howManyWays(n - 1) + howManyWays(n - 2);
-//     return cache[n];
-//   };
-//   return howManyWays(n);
-// };
+  const howManyWays = function (n) {
+    // console.log(cache)
+    if (n in cache) {
+      return cache[n];
+    }
+    if (n < 4) {
+      cache[n] = n;
+      return cache[n];
+    }
+    cache[n] = howManyWays(n - 1) + howManyWays(n - 2);
+    console.log(cache);
+    return cache[n];
+  };
+  return howManyWays(n);
+};
 
 // recursive solution;
 // const climbStairs = function (n) {
