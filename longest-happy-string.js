@@ -195,7 +195,7 @@ function happyStrings(a, b, c) {
   return result.join('');
 }
 
-console.log(happyStrings(1, 1, 7)); // expect "ccaccbcc" or "ccbccacc"
+// console.log(happyStrings(1, 1, 7)); // expect "ccaccbcc" or "ccbccacc"
 // console.log(happyStrings(7, 1, 0)); // expect "aabaa"
 // console.log(happyStrings(3, 3, 3)); // expect "aabbccabc" or "abccbaabc"
 // console.log(happyStrings(3, 12, 5)); // expect "bbcbbcbbcbbabbabccba"
