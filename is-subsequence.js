@@ -29,7 +29,7 @@ var isSubsequence = function (s, t) {
       counter += 1;
     }
   }
-  return counter === s.length ? true : false;
+  return counter === s.length;
 };
 
 console.log(isSubsequence('abc', 'ahbgdc')); // expect true
@@ -37,3 +37,5 @@ console.log(isSubsequence('axc', 'ahbgdc')); // expect false
 console.log(isSubsequence('b', 'xxxxxxx')); // expect false
 console.log(isSubsequence('abc', 'def')); // expect false
 console.log(isSubsequence('acb', 'ahbgdc')); // expect false
+console.log(isSubsequence('', 'ahbgdc')); // expect true
+console.log(isSubsequence('a', '')); // expect false
