@@ -111,37 +111,65 @@ Explanation: There is no such common subsequence, so the result is 0.*/
 //   return dp[text1.length][text2.length];
 // };
 
-// DP solution from Neetcode
-var longestCommonSubsequence = (text1, text2) => {
-  const tabu = initTabu(text1, text2); /* Time O(N * M) | Space O(N * M) */
+// add'l DP solution
+// var longestCommonSubsequence = (text1, text2) => {
+//   const tabu = initTabu(text1, text2); /* Time O(N * M) | Space O(N * M) */
 
-  search(text1, text2, tabu); /* Time O(N * M) | Space O(N * M) */
+//   search(text1, text2, tabu); /* Time O(N * M) | Space O(N * M) */
 
-  return tabu[0][0];
-};
+//   return tabu[0][0];
+// };
 
-var initTabu = (text1, text2) =>
-  new Array(text1.length + 1)
-    .fill() /* Time O(N) | Space O(N) */
-    .map(() =>
-      new Array(text2.length + 1).fill(0)
-    ); /* Time O(M) | Space O(M) */
+// var initTabu = (text1, text2) =>
+//   new Array(text1.length + 1)
+//     .fill() /* Time O(N) | Space O(N) */
+//     .map(() =>
+//       new Array(text2.length + 1).fill(0)
+//     ); /* Time O(M) | Space O(M) */
 
-var search = (text1, text2, tabu) => {
-  const [n, m] = [text1.length, text2.length];
+// var search = (text1, text2, tabu) => {
+//   const [n, m] = [text1.length, text2.length];
 
-  for (let x = n - 1; 0 <= x; x--) {
-    /* Time O(N) */
-    for (let y = m - 1; 0 <= y; y--) {
-      /* Time O(M) */
-      tabu[x][y] =
-        text1[x] === text2[y] /* Space O(N * M) */
-          ? tabu[x + 1][y + 1] + 1
-          : Math.max(tabu[x + 1][y], tabu[x][y + 1]);
+//   for (let x = n - 1; 0 <= x; x--) {
+//     /* Time O(N) */
+//     for (let y = m - 1; 0 <= y; y--) {
+//       /* Time O(M) */
+//       tabu[x][y] =
+//         text1[x] === text2[y] /* Space O(N * M) */
+//           ? tabu[x + 1][y + 1] + 1
+//           : Math.max(tabu[x + 1][y], tabu[x][y + 1]);
+//     }
+//   }
+//   console.log(tabu);
+// };
+
+// add'l solution from leetcode w/explanation
+function longestCommonSubsequence(text1, text2) {
+  // create dp array of size text1+1 x text2+1 filled w/ zeros
+  const dp = [...Array(text1.length + 1)].map((e) => Array(text2.length + 1));
+
+  // iterate i by j
+  for (let i = 0; i <= text1.length; i++) {
+    for (let j = 0; j <= text2.length; j++) {
+      // if this is first row, make it a 0 (impossible to have substring here)
+      if (i === 0 || j === 0) {
+        dp[i][j] = 0;
+      } else if (text1.charCodeAt(i - 1) === text2.charCodeAt(j - 1)) {
+        // last characters match in both strings,
+        // so this is a value substring, take length from last (if any)
+        // and add 1
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+      } else {
+        // take max of top or left (longer substring)
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+      }
     }
   }
-  console.log(tabu);
-};
+
+  // result is in bottom right cell
+  console.log(dp);
+  return dp[text1.length][text2.length];
+}
 
 console.log(longestCommonSubsequence('abcde', 'ace')); // expect 3
 // console.log(longestCommonSubsequence('abc', 'def')); // expect 0
