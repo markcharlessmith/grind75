@@ -24,6 +24,10 @@ Output: true
 */
 
 const validParens = (input) => {
+  // check input first
+  if (input.length === 0) return true;
+  if (input.length === 1) return false;
+  if (input.length % 2 !== 0) return false;
   //create an object to hold the types of parens to check against
   const dict = {
     '(': ')',
@@ -39,6 +43,7 @@ const validParens = (input) => {
       console.log(char);
       stack.push(dict[char]);
     }
+    console.log(stack);
     // if the char is a close
     if (char === ')' || char === ']' || char === '}') {
       if (char === stack[stack.length - 1]) {
@@ -49,11 +54,12 @@ const validParens = (input) => {
   return !stack.length;
 };
 
-console.log(validParens('()')); // true
-console.log(validParens('()[]{}')); // true
-console.log(validParens('(]')); // false
-console.log(validParens('([])')); // true
+console.log(validParens('()')); // expect true
+console.log(validParens('()[]{}')); // expect true
+console.log(validParens('(]')); // expect false
+console.log(validParens('([])')); // expect true
+console.log(validParens('(')); // expect false
+console.log(validParens('')); // expect true
+console.log(validParens('{([{])}')); // expect false
 
 // extension: use recursion and .slice()
-
-// if input[i] === '(', look for
