@@ -25,15 +25,16 @@ Output: false
 Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 */
 
-function isPalindrome(n) {
+function isPalindrome(n: number) {
   if (!n || typeof n !== 'number') return 'please enter a number';
 
-  let temp = 0;
-  let x;
-  let y = n;
+  let temp: number = 0;
+  let x: number;
+  let y: number = n;
 
   while (n > 0) {
     x = n % 10;
+    // console.log(typeof n)
     n = parseInt(n / 10);
     temp = temp * 10 + x;
     console.log(temp);
@@ -42,7 +43,8 @@ function isPalindrome(n) {
   return temp === y;
 }
 
-// console.log(isPalindrome(121));
-// console.log(isPalindrome(-121));
-// console.log(isPalindrome(10));
-// console.log(isPalindrome());
+console.log(isPalindrome(121)); // expect true
+console.log(isPalindrome(-121)); // expect false
+console.log(isPalindrome(10)); // expect false
+console.log(isPalindrome());
+console.log(isPalindrome(72727)) // expect true
