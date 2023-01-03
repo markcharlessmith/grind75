@@ -64,7 +64,7 @@ var twoSum = function (numbers, target) {
 
   // iterate through the numbers - while left is less than right
   while (left < right) {
-    const sum = numbers[left] + numbers[right];
+    let sum = numbers[left] + numbers[right];
     if (sum === target) return [left + 1, right + 1];
     else if (sum > target) right--;
     else left++;
@@ -76,6 +76,7 @@ console.log(twoSum([2, 3, 4], 6)); // expect [1,3]
 console.log(twoSum([2, 7, 11, 15], 9)); // expect [1,2]
 console.log(twoSum([-1, 0], -1)); // expect [1,2]
 console.log(twoSum([1, 2, 3, 4, 4, 9, 56, 90], 8)); // expect [4,5]
+console.log(twoSum([1, 3, 4, 5, 7, 8, 10, 11], 17)); // expect [5,7]
 console.log(
   twoSum(
     [
