@@ -27,9 +27,9 @@ strs[i] consists of lowercase English letters.*/
 // input: array of strings
 // output: array of arrays of strings, grouped accordingly
 
-const groupAnagrams = (words) => {
+const groupAnagrams = (words: string[]) => {
   let anagrams = {};
-  let collectedAnagrams = [];
+  let collectedAnagrams: string[][] = [];
 
   for (let word of words) {
     // alphabetize letters
