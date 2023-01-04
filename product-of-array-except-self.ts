@@ -48,13 +48,11 @@ var productExceptSelf = function(nums: number[]) {
       result[i] = productSoFar
       productSoFar *= nums[i]
   }
-  console.log(result)
   productSoFar = 1
   for (let j: number = nums.length-1; j >= 0; j--) {
       result[j] *= productSoFar
       productSoFar *= nums[j]
   }
-  console.log(result)
   return result;
 };
 
