@@ -32,7 +32,7 @@ grid[i][j] is '0' or '1'.
  */
 
 // helper function doing depth-first search
-function dfs(grid, i, j) {
+function dfs(grid: string[][], i: number, j: number) {
   // check if the i and j values are valid - if they aren't, return out
   if (
     i < 0 ||
@@ -51,7 +51,7 @@ function dfs(grid, i, j) {
   dfs(grid, i, j - 1);
 }
 
-var numIslands = function (grid) {
+var numIslands = function (grid: string[][]) {
   let count = 0;
   // loop through the grid
   for (let i = 0; i < grid.length; i++) {
