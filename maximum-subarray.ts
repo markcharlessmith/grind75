@@ -45,9 +45,9 @@ Follow up: If you have figured out the O(n) solution, try coding another solutio
 // }
 
 // Optimized solution with O(n) time complexity
-function maxSubarray(nums) {
-  let previous = -Infinity;
-  let largestSum = -Infinity;
+function maxSubarray(nums: number[]) {
+  let previous: number = -Infinity;
+  let largestSum: number = -Infinity;
   // if the input array is empty, return a message indicating so
   if (!nums.length) return 'There are no numbers in the input array.';
   for (let i = 0; i < nums.length; i++) {
