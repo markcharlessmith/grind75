@@ -32,7 +32,7 @@ function binarySearch(nums, target) {
   let right = nums.length - 1;
   while (left <= right) {
     let mid = Math.floor((left + right) / 2);
-    // console.log([left, mid, right]);
+    console.log([left, mid, right]);
     if (nums[mid] === target) {
       return mid;
     }
@@ -63,4 +63,4 @@ function binarySearch(nums, target) {
 
 const numArray1 = [-1, 0, 3, 5, 9, 12];
 console.log(binarySearch(numArray1, 9)); // should print 4
-console.log(binarySearch(numArray1, 2)); // should print -1
+// console.log(binarySearch(numArray1, 2)); // should print -1
