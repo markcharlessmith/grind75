@@ -29,27 +29,30 @@ s consists only of printable ASCII characters.
 // base case: if string has length two, and index zero equals index one
 // recursive case: check if index 0 === index[string.length-1], if true, slice off first and last index
 
-function validPalindrome(string) {
+function validPalindrome(string: string) {
   // define regex to remove non-alphanumeric characters
-  const regex = /[^A-Za-z0-9]/g;
+  const regex: RegExp = /[^A-Za-z0-9]/g;
   // declare a variable, assigned the input string converted to lower case and removing non-alphanumerics
-  let stringToCheck = string.toLowerCase().replace(regex, '');
-  console.log(stringToCheck);
+  let stringToCheck: string = string.toLowerCase().replace(regex, '');
+  // console.log(stringToCheck);
   if (stringToCheck.length === 0) return true;
   if (stringToCheck.length === 1) return true;
   // recursively slice through the string
   if (stringToCheck[0] === stringToCheck[stringToCheck.length - 1]) {
-    console.log(stringToCheck);
+    // console.log(stringToCheck);
     return validPalindrome(stringToCheck.slice(1, -1));
   }
   return false;
 }
 
 const string1 = 'A man, a plan, a canal: Panama';
-console.log(validPalindrome(string1)); //should return true;
+console.log(validPalindrome(string1)); //expect true;
 
 const string2 = 'race a car';
-console.log(validPalindrome(string2)); //should return false;
+console.log(validPalindrome(string2)); //expect false;
 
 const string3 = '';
-console.log(validPalindrome(string3)); //should return true
+console.log(validPalindrome(string3)); //expect true
+
+const string4 = '12321';
+console.log(validPalindrome(string4)); //expect true
