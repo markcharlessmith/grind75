@@ -259,3 +259,17 @@ console.log(nowNow);
 // }
 
 // console.log(res);
+
+const arr1 = ["1", "3", 4, 7]
+
+function mixedArrReducer (arr) {
+  // for (let i = 0; i < arr.length; i++) {
+  //   if (typeof arr[i] !== "number") arr[i] = +arr[i];
+  //   }
+  return arr.reduce((a, b) => +a + +b)
+}
+
+console.log(mixedArrReducer(arr1))
+
+let x = "7"
+console.log(typeof +x)
