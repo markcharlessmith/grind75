@@ -25,17 +25,15 @@ Constraints:
 0 <= prices[i] <= 104
 */
 
-const maxProfit = function (prices) {
-  let left = 0;
-  let right = 1;
+const maxProfit = function (prices: number[]) {
+  let left: number = 0, right: number = 1;
   // left is buying and right is selling;
   // maximum profit starts out at zero
-  let mP = 0;
+  let mP: number = 0;
 
   while (right < prices.length) {
     if (prices[left] < prices[right]) {
-      profit = prices[right] - prices[left];
-      console.log(profit);
+      let profit: number = prices[right] - prices[left];
       mP = Math.max(mP, profit);
     } else {
       left = right;
