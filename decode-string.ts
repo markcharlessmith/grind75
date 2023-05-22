@@ -20,46 +20,40 @@ s consists of lowercase English letters, digits, and square brackets '[]'.
 s is guaranteed to be a valid input.
 All the integers in s are in the range [1, 300]. */
 
-const stringArr = ['2', '[', 'a', ']'];
+function decodeString(s: string): string {
+  const stack: string[] = [];
+  let currNum = 0;
+  let currStr = '';
 
-const numArr = stringArr.map(Number);
-console.log(numArr);
-
-let k = [];
-
-for (let i = 0; i < numArr.length; i++) {
-  if (Number.isNaN(numArr[i])) {
-    numArr.slice(i, 1);
-    console.log(numArr);
+  for (let i = 0; i < s.length; i++) {
+    if (isNumeric(s[i])) {
+      currNum = currNum * 10 + parseInt(s[i]);
+    } else if (s[i] === '[') {
+      stack.push(currStr);
+      stack.push(currNum.toString());
+      currNum = 0;
+      currStr = '';
+    } else if (s[i] === ']') {
+      let num = parseInt(stack.pop()!);
+      let prevStr = stack.pop()!;
+      currStr = prevStr + currStr.repeat(num);
+    } else {
+      currStr += s[i];
+    }
   }
+
+  return currStr;
 }
-console.log(numArr);
 
-// function decodeString(s) {
-//   let result = '';
-//   let currNum = 0;
-
-//   s = s.split('');
-//   console.log(s);
-
-//   // iterate through s,
-//   for (let i = 0; i < s.length; i++) {
-//     currNum = parseInt(s[i]);
-//     console.log(currNum);
-
-//     if (typeof parseInt(s[i]) === 'number') {
-//       currNum = s[i];
-//     }
-//   }
-//   // while s is not equal to ']', push
-//   // if s[i] is a
-// }
+function isNumeric(char: string): boolean {
+  return !isNaN(Number(char));
+}
 
 const input1 = '3[a]2[bc]';
 console.log(decodeString(input1)); // expect "aaabcbc"
 
-// const input2 = '3[a2[c]]';
-// console.log(decodeString(input2)); // expect "accaccacc"
+const input2 = '3[a2[c]]';
+console.log(decodeString(input2)); // expect "accaccacc"
 
-// const input3 = '2[abc]3[cd]ef';
-// console.log(decodeString(input3)); // expect "abcabccdcdcdef"
+const input3 = '2[abc]3[cd]ef';
+console.log(decodeString(input3)); // expect "abcabccdcdcdef"
